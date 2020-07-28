@@ -1,6 +1,6 @@
 package com.kh.example.chap02_abst.family.model.vo;
 
-public class Family {
+public class Family implements Basic{
 	private String name;
 	private double weight;
 	private int health;
@@ -33,6 +33,16 @@ public class Family {
 	@Override
 	public String toString() {
 		return name + ", " + weight + ", " + health;
+	}
+	
+	@Override
+	public void eat() {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void sleep() {
+		// TODO Auto-generated method stub
 	}
 	
 //	//추상메서드 선언
