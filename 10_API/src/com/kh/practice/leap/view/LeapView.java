@@ -22,6 +22,5 @@ public class LeapView {
 		
 		System.out.println(year + "년은 " + yearInfo + "입니다.");
 		System.out.println("총 날짜 수 : " + dateCount);
-		System.out.println(c);
 	}
 }
