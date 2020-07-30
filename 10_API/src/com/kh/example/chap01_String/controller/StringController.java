@@ -10,7 +10,7 @@ public class StringController {
 		String str3 = new String("java");
 		
 		System.out.println("str1과 str2의 주소는 같은가? " + (str1 == str2)); 
-		System.out.println("str1과 str2의 주소는 같은가? " + (str1 == str3));
+		System.out.println("str1과 str3의 주소는 같은가? " + (str1 == str3));
 		
 		//hashCode()
 		//Object 안에 있는 메소드
