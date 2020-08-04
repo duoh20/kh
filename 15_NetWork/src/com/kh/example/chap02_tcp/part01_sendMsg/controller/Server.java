@@ -1,4 +1,4 @@
-package com.kh.example.chap02_ctp.part01_sendMsg.controller;
+package com.kh.example.chap02_tcp.part01_sendMsg.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
