@@ -76,7 +76,7 @@ public class PointMenu {
 		System.out.print("반지름 : ");
 		int radius = sc.nextInt();
 		
-		System.out.println(cc.calcCircum(x, y, radius));
+		System.out.println("둘레 : " + cc.calcCircum(x, y, radius)); //view에서 보여야하는 문구는 콘트롤러 안에 처리하지 말자.
 	}
 	
 	public void calcCircleArea() {
@@ -87,7 +87,7 @@ public class PointMenu {
 		System.out.print("반지름 : ");
 		int radius = sc.nextInt();
 		
-		System.out.println(cc.calcArea(x, y, radius));
+		System.out.println("면적 : " + cc.calcArea(x, y, radius));
 	}
 	
 	public void calcPerimeter() {
@@ -100,7 +100,7 @@ public class PointMenu {
 		System.out.print("높이 : ");
 		int width = sc.nextInt();
 		
-		System.out.println(rc.calcPerimeter(x, y, height, width));
+		System.out.println("둘레 : " + rc.calcPerimeter(x, y, height, width));
 	}
 	
 	public void calcRectArea() {
@@ -113,6 +113,6 @@ public class PointMenu {
 		System.out.print("높이 : ");
 		int width = sc.nextInt();
 		
-		System.out.println(rc.calcArea(x, y, height, width));
+		System.out.println("면적 : " + rc.calcArea(x, y, height, width));
 	}
 }

@@ -24,8 +24,9 @@ public class Rectangle extends Point {
 		this.height = height;
 	}
 	
+	@Override
 	public String toString() {
-		return super.toString() + width + height;
+		return super.toString() + " " + width + "  " + height;
 	}
 	
 }

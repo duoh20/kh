@@ -23,6 +23,6 @@ public class Point {
 	}
 	
 	public String toString() {
-		return Integer.toString(x) + y;
+		return x + ", " + y; //가운데 문자열이 있어 스트링으로 변
 	}
 }
