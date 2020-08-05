@@ -17,7 +17,8 @@ public class Circle extends Point {
 		this.radius = radius;
 	}
 	
+	@Override //어노테이션 잊지 맙시다.
 	public String toString() {
-		return super.toString() + radius;
+		return super.toString() + ", " + radius;
 	}
 }
