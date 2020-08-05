@@ -30,13 +30,17 @@ public class D_ImageLabel {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
+		
 		button.addActionListener(new ActionListener() {
 		//이미지 보기를 누르면 이미지가 바뀌는 이벤트 추가
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//익명 함수라서 바깥에 사용된 변수 명에 관계 없이 변수 명을 중복할 수 있다.
 				Image icon = new ImageIcon("image/dog.PNG").getImage().getScaledInstance(150, 150, 0);
+				Image icon2 = new ImageIcon("image/tiger.PNG").getImage().getScaledInstance(150, 150, 0);
 				label.setIcon(new ImageIcon(icon));
+				label.setIcon(new ImageIcon(icon2));
 			}
 		});
 	}
