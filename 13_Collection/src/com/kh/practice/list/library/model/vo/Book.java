@@ -41,27 +41,12 @@ public class Book implements Comparable<Book> {
 	
 	@Override
 	public String toString() {
-		return "\t("+ title +"/"+ author +"/"+category+"/"+price+")";
-	}
-	
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		return "("+ title +"/"+ author +"/"+category+"/"+price+")";
 	}
 	
 	@Override
 	public int compareTo(Book o) {
-		// TODO Auto-generated method stub
-		return 0;
+		String other = (o).getTitle();
+		return title.compareTo(other);
 	}
-	
-	
-
 }

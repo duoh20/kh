@@ -1,5 +1,6 @@
 package com.kh.practice.list.library.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.kh.practice.list.library.controller.BookController;
@@ -38,39 +39,80 @@ public class BookMenu {
 	}
 	
 	public void insertBook() {
-		System.out.println("===== 새 도서 추가 =====");
 		System.out.println("책 정보를 입력해주세요.");
 		System.out.print("도서 명 : ");
 		String title = sc.nextLine();
 		System.out.print("저자 명 : ");
 		String author = sc.nextLine();
+		System.out.print("장르(1. 인문/ 2. 과학 / 3. 외국어 / 4. 기타) : ");
+		int input = Integer.parseInt(sc.nextLine());
 		String category = "";
-		int input;
-		do {
-			System.out.print("장르(1. 인문/ 2. 과학 / 3. 외국어 / 4. 기타) : ");
-			
-			try {
-				input = Integer.parseInt(sc.nextLine());
-			} catch(NumberFormatException e) {
-				return;
-			}
-			
-			switch(input) {
-			case 1: category = "인문"; break;
-			case 2: category = "과학"; break;
-			case 3: category = "외국어"; break;
-			case 4: category = "기타"; break;
-			default: System.out.println("잘못 입력하였습니다.\n다시 입력해주세요.");
-			}
-		} while(!(0 < input && input < 5));
+		switch(input) {
+		case 1: category = "인문"; break;
+		case 2: category = "과학"; break;
+		case 3: category = "외국어"; break;
+		case 4: category = "기타"; break;
+		}
 		System.out.print("가격 : ");
 		int price = Integer.parseInt(sc.nextLine());
 		
-		Book b = new Book(title, author, category, price);
-		System.out.println(b.toString());
+		Book bk = new Book(title, author, category, price);
+		bc.insertBook(bk);
 	}
-	public void selectList() {}
-	public void searchBook() {}
-	public void deleteBook() {}
-	public void ascBook() {}
+	
+	public void selectList() {
+		System.out.println("===== 도서 전체 조회 =====");
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		bookList = bc.selectList();
+		if(bookList.isEmpty()) {
+			System.out.println("존재 하는 도서가 없습니다.");
+		} else {
+			for(int i = 0; i < bookList.size(); i++) {
+				System.out.println("\t" + bookList.get(i));
+			}
+		}
+	}
+	
+	public void searchBook() {
+		ArrayList<Book> searchBook = new ArrayList<Book>();
+		System.out.println("===== 도서 검색 =====");
+		System.out.print("검색 키워드 : ");
+		String keyword = sc.nextLine();
+		
+		searchBook = bc.searchBook(keyword);
+		
+		if(searchBook.isEmpty()) {
+			System.out.println("검색 결과가 없습니다.");
+		} else {
+			for(int i = 0; i < searchBook.size(); i++) {
+				System.out.println("\t" + searchBook.get(i));
+			}
+		}
+	}
+	
+	public void deleteBook() {
+		System.out.println("===== 도서 검색 =====");
+		System.out.print("삭제할 도서 명: ");
+		String title = sc.nextLine();
+		System.out.print("삭제할 도서 저자명 : ");
+		String author = sc.nextLine();
+		
+		Book removeBook =bc.deleteBook(title, author);
+		
+		if(removeBook != null) {
+			System.out.println("성공적으로 삭제되었습니다.");
+		} else {
+			System.out.println("삭제할 도서를 찾지 못했습니다.");
+		}
+	}
+	
+	public void ascBook() {
+		int result = bc.ascBook();
+		
+		if(result == 1) {
+			System.out.println("정렬에 성공하였습니다.");
+		} else {
+			System.out.println("정렬에 실패하였습니다.");
+		}
+	}
 }
