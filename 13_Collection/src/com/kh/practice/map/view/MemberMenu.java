@@ -1,9 +1,13 @@
 package com.kh.practice.map.view;
 
+<<<<<<< HEAD
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+=======
+import java.util.Scanner;
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 
 import com.kh.practice.map.controller.MemberController;
 import com.kh.practice.map.model.vo.Member;
@@ -28,7 +32,11 @@ public class MemberMenu {
 			
 			switch(menu) {
 			case 1: joinMembership(); break;
+<<<<<<< HEAD
 			case 2: login(); memberMenu(); break;
+=======
+			case 2: login(); break;
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 			case 3: sameName(); break;
 			case 9: System.out.println("프로그램을 종료합니다."); break;
 			default: System.out.println("잘못 입력하였습니다.\n다시 입력해주세요.");
@@ -36,16 +44,26 @@ public class MemberMenu {
 		} while(menu != 9);
 	}
 	
+<<<<<<< HEAD
 	public void memberMenu() {
+=======
+	public void memebrMenu() {
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 		int menu = 0;
 		do {
 			System.out.println("***** 회원 메뉴 *****");
 			System.out.println("1. 비밀번호 바꾸기");
 			System.out.println("2. 이름 바꾸기");
 			System.out.println("3. 로그아웃");
+<<<<<<< HEAD
 			System.out.println();
 			System.out.print("메뉴 번호 선택 : ");
 			menu = Integer.parseInt(sc.nextLine());
+=======
+			System.out.print("메뉴 번호 선택 : ");
+			menu = Integer.parseInt(sc.nextLine());
+			System.out.println();
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 			
 			switch(menu) {
 			case 1: changePassword(); break;
@@ -57,6 +75,7 @@ public class MemberMenu {
 	}
 	
 	public void joinMembership() {
+<<<<<<< HEAD
 		while(true) {
 			System.out.println("***** 회원 가입 *****");
 			System.out.print("아이디 : ");
@@ -73,10 +92,29 @@ public class MemberMenu {
 			} else {
 				System.out.println("중복된 아이디입니다. 다시 입력해주세요.");			
 			}
+=======
+		System.out.println("***** 회원 가입 *****");
+		System.out.print("아이디 : ");
+		String id= sc.nextLine();
+		System.out.print("비밀번호 : ");
+		String password = sc.nextLine();
+		System.out.print("이름 : ");
+		String name = sc.nextLine();
+		Member m = new Member(password, name);
+		boolean isJoin = mc.joinMembership(id, m);
+		
+		if(isJoin) {
+			System.out.println("정상적으로 회원 가입 완료하였습니다.");
+			memebrMenu();
+		} else {
+			System.out.println("중복된 아이디입니다. 다시 입력해주세요.");			
+			joinMembership();
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 		}
 	}
 	
 	public void login() {
+<<<<<<< HEAD
 		while(true) {
 			System.out.print("아이디 : ");
 			String id= sc.nextLine();
@@ -144,4 +182,21 @@ public class MemberMenu {
 			System.out.println(me.getValue() + "-" + me.getKey());
 		}
 	}
+=======
+		
+	}
+	
+	public void changePassword() {
+		
+	}
+	
+	public void changeName() {
+		
+	}
+	
+	public void sameName() {
+		
+	}
+	
+>>>>>>> 4bf9f8f981abd4abc4a926f71f93752c05011dc3
 }
