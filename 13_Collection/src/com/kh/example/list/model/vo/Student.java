@@ -85,6 +85,5 @@ public class Student implements Comparable<Student>/*Student만 가지고 정렬
 		 */
 		return result;
 		//내림차순으로 하려면 return -result;
-	}
-	
+	}	
 }
