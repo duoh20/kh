@@ -2,7 +2,7 @@ package com.kh.practice.token.view;
 
 import java.util.Scanner;
 
-import com.kh.practice.token.controller.TokenController.TokenController;
+import com.kh.practice.token.controller.TokenController;
 
 public class TokenMenu {
 	private Scanner sc = new Scanner(System.in);

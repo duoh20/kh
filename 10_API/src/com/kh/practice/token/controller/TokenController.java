@@ -1,4 +1,4 @@
-package com.kh.practice.token.controller.TokenController;
+package com.kh.practice.token.controller;
 
 import java.util.StringTokenizer;
 

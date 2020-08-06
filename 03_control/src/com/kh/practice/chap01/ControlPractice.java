@@ -73,4 +73,33 @@ public class ControlPractice {
 		default: 
 		} System.out.println(month + "월은 잘못 입력된 달입니다.");
 	}
+	
+	public void Practice11() {
+		System.out.print("비밀번호 입력(1000~9999) : ");
+		int input = sc.nextInt();
+		String checkNum;
+		
+		do {
+			if(1000 < input && input < 10000) {
+				System.out.println("자리수 안맞음");
+			} else {
+				checkNum = "" + input;
+				String[] sArr = new String[4];
+				
+				for(int i = 0; i < sArr.length; i++) {
+					sArr[i] = checkNum.substring(i, i+1);
+				}
+				
+				for(int i = 0; i < sArr.length; i++) {
+					for(int j = 0; j < sArr.length; j++) {
+						if(!sArr[i].equals(sArr[j+1])) {
+							System.out.println("성공");
+						} else {
+							System.out.println("실패");
+						}
+					}
+				}
+			}
+		}while(input );
+	}
 }

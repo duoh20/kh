@@ -23,34 +23,34 @@ public class DateController {
 	
 	public void method2() {
 		//Calendar c = new Calendar();
-		//Calendar는 추상 클래스이고 protected로 접근이 제한되어 있어 라서 객체 생성 불가
+		//Calendar는 추상 클래스이고 protected로 접근이 제한되어 있어 객체 생성 불가
 		Calendar c = Calendar.getInstance();
-		System.out.println(c);
+		System.out.println("c : " + c);
 		
 		Calendar gc = new GregorianCalendar(); //다형성: 부모 타입의 변수에 자식 객체를 담을 수 있음
-		System.out.println(gc);
+		System.out.println("gc : " + gc);
 		
 		int year = c.get(Calendar.YEAR);
-		System.out.println(year);
+		System.out.println("c.get(Calendar.YEAR) : " +year);
 		
 		int month = c.get(Calendar.MONTH) + 1; //month는 0월부터 시작하므로, +1 을 해줌 
-		System.out.println(month);
+		System.out.println(" c.get(Calendar.MONTH) : " + month);
 		
 		int date = c.get(Calendar.DATE);
-		System.out.println(date);
+		System.out.println("c.get(Calendar.DATE) : " + date);
 		
 		int amPm = c.get(Calendar.AM_PM); //오전은 0, 오후는 1 반환
 		String sAmPm = amPm == 0 ? "오전" : "오후";
-		System.out.println(sAmPm);
+		System.out.println("c.get(Calendar.AM_PM) : " + sAmPm);
 
 		//int hour = c.get(Calendar.HOUR); //12시간제 시로 반환
 		int hour = c.get(Calendar.HOUR_OF_DAY); //24시간제 시로 반환
 		int minute = c.get(Calendar.MINUTE);
 		int sec = c.get(Calendar.SECOND);
-		System.out.println(hour + ":" + minute + ":" + sec);
+		System.out.println("시간 : " + hour + ":" + minute + ":" + sec);
 		
 		int day = c.get(Calendar.DAY_OF_WEEK);
-		System.out.println(day); //인덱스는 1~7이고 일요일부터 시작
+		System.out.println("day : " + day + "(인덱스는 1~7이고 일요일부터 시작)");
 	}
 	
 	public void method3() {
