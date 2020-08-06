@@ -5,36 +5,35 @@ import java.net.*;
 import java.util.Scanner;
 
 public class Client {
-	public void startClient() {
+		public void startClient() {
 		try {
-			//1. 서버의 포트 번호와 IP를 가져와서 클라이언트용 소켓 생성
-			int port = 8600;
+			BufferedReader br = null;
+			PrintWriter pw = null;
+		//서버의 포트 번호와 IP 확인
+			int port = 9100;
 			String serverIP = InetAddress.getLocalHost().getHostAddress();
-			
+		//IP주소와 port로 서버와 연결 소캣 생성
 			Socket socket = new Socket(serverIP, port);
 			
-			if(socket != null) { //socket이 null이라면 연결이 안되었다는 의미
-			//2. 서버와 입출력 스트림 생성
+		//서버와 입출력 스트림 생성
+			if(socket != null) {
 				InputStream input = socket.getInputStream();
 				OutputStream output = socket.getOutputStream();
-			
-			//3. 보조 스트림을 통해 성능 개선
-				BufferedReader br = new BufferedReader(new InputStreamReader(input));
-				PrintWriter pw = new PrintWriter(output);
-				
-			//4. 스트림을 통해 읽고 쓰기
+		//보조스트림으로 성능 향상
+				br = new BufferedReader(new InputStreamReader(input));
+				pw = new PrintWriter(output);
+		
+		//스트림을 통해 읽고 쓰기
 				Scanner sc = new Scanner(System.in);
 				
 				do {
 					System.out.print("대화 입력 : ");
 					String message = sc.nextLine();
 					
-					//pw를 통해 메세지를 입력, exit가 입력되면 더 이상 입력 받지 않음
 					pw.println(message);
 					pw.flush();
 					
-					if(message.contentEquals("exit")) {
-						System.out.println("접속 종료");
+					if(message.equals("exit")) {
 						break;
 					}
 					
@@ -42,11 +41,11 @@ public class Client {
 					System.out.println(serverMsg);
 				} while(true);
 				
-			// 5. 통신 종료
-				pw.close();
-				br.close();
-				socket.close();
 			}
+		//통신 종료
+			br.close();
+			pw.close();
+			socket.close();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
