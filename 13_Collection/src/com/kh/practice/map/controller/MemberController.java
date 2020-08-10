@@ -52,13 +52,13 @@ public class MemberController {
 			m.setName(newName);
 	}
 	
-	public TreeMap<String, String> sameName(String name) {
-		TreeMap<String, String> tm = new TreeMap<String, String>();
-		Set<String> readMap = map.keySet(); //keyset()으로 바꾼 후 set타입으로 바꿈
-		Iterator<String> it = readMap.iterator(); //iterator를 사용해 순차적으로 탐색
+	public TreeMap sameName(String name) {
+		TreeMap tm = new TreeMap();
+		Set readMap = map.keySet(); //keySet()으로 바꾼 후 set타입으로 바꿈
+		Iterator it = readMap.iterator(); //iterator를 사용해 순차적으로 탐색
 		
 		while(it.hasNext()) {
-			String key = it.next();
+			String key = (String)it.next(); //Object를 반환하므로 String으로 변환
 			Member m = map.get(key);
 			if(m.getName().contentEquals(name)) {
 				tm.put(key, name);

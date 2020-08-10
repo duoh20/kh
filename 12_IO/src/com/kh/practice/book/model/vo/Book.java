@@ -16,6 +16,7 @@ public class Book implements Serializable{
 	private double discount;
 	
 	public Book() {}
+	
 	public Book(String title, String author, int price, Calendar date, double discount) {
 		this.title = title;
 		this.author = author;

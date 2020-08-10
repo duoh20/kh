@@ -1,4 +1,4 @@
-package com.kh.example.lmap.run;
+package com.kh.example.map.run;
 
 import com.kh.example.map.controller.MapController;
 
