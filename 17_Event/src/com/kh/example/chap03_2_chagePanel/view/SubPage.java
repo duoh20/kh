@@ -9,8 +9,7 @@ public class SubPage extends JPanel {
 		setSize(250, 150);
 		setBackground(Color.gray);		
 		frame.add(this);
+		
+		
 	}
-	
-	MainPage mp = new MainPage();
-	
 }
