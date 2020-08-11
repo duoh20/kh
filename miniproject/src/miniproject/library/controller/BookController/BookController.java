@@ -3,6 +3,7 @@ package miniproject.library.controller.BookController;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,27 +25,28 @@ public class BookController {
 		}
 	}
 	
-	public boolean addNewBook(Book book) {
-		if(book != null) {
-			bookList.add(book);
-			bd.saveBookList(bookList);
-			return true;
-		} 
-		return false;
+	public void addNewBook(Book book) {
+		bookList.add(book);
+		bd.saveBookList(bookList);
+	}
+	
+	public void readBookList() {
+		bookList = bd.openBookList();
+		System.out.println(bookList.toString());
 	}
 	
 	//{객체1, 객체2, 객체3..}
 	//{{객체 1의 필드들}, {객체2의 필드들}...}
 	
-	public String[][] readBookList() {
-		String[][] bl = new String[bookList.size()][];
-		for(int i = 0; i < bookList.size(); i++) {
-			for(int j = 0; j < bookList.get(i). j++) {
-			
-			}
-		}
-		return bl;
-	}
+//	public String[][] readBookList() {
+//		String[][] bl = new String[bookList.size()][];
+//		for(int i = 0; i < bookList.size(); i++) {
+//			for(int j = 0; j < bookList.get(i). j++) {
+//			
+//			}
+//		}
+//		return bl;
+//	}
 	
 	
 	

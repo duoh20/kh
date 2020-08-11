@@ -1,32 +1,28 @@
 package miniproject.library.model.Book;
 
-public class Book {
-	private String bookID;
+import java.io.Serializable;
+
+public class Book implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//private String bookID;
 	private String title;
 	private String author;
 	private String category;
 	private boolean isRentalable;
 	
-	public Book() {};
+	public Book() {}
 	
-	public Book (String bookID, String title, String author, String category) {
-		this.bookID = bookID;
+	public Book (String title, String author, String category) {
 		this.title = title;
 		this.author = author;
 		this.category = category;
 	}
 	
-	public Book (String bookID, String title, String author, String category, boolean isRentalable) {
-		this(bookID, title, author, category);
+	public Book (String title, String author, String category, boolean isRentalable) {
 		this.isRentalable = isRentalable;
-	}
-
-	public String getBookID() {
-		return bookID;
-	}
-
-	public void setBookID(String bookID) {
-		this.bookID = bookID;
 	}
 
 	public String getTitle() {
@@ -44,17 +40,25 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	public String getCategoty() {
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-	public boolean isRentalable() {
+	public boolean getIsRentalable() {
 		return isRentalable;
 	}
 
-	public void setisRentalable(boolean isRentalable) {
+	public void setIsRentalable(boolean isRentalable) {
 		this.isRentalable = isRentalable;
 	}
 	
 	@Override
 	public String toString() {
-		return bookID + title + author + isRentalable;
+		return title + ", " + author + ", " + category + ", " + isRentalable;
 	}
 }
