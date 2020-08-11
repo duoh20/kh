@@ -1,8 +1,6 @@
 package miniproject.library.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import miniproject.library.model.Book;
 import miniproject.library.model.BookDAO;

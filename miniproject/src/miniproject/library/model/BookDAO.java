@@ -17,6 +17,7 @@ public class BookDAO {
 
 	public BookDAO() {
 	List bookList = new ArrayList<>();
+	}
 	
 	public void hasFile() {
 		if(!bookFile.exists()) {
@@ -30,15 +31,12 @@ public class BookDAO {
 
 	public void saveBookList(List bookList) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(bookFile))){
-		hasFile();
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(bookFile, true))){
 				oos.writeObject(bookList);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-
 	public List openBookList() {
 		List bookList = new ArrayList<>();
 		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(bookFile)))) {
@@ -47,12 +45,5 @@ public class BookDAO {
 			e.printStackTrace();
 		}
 		return bookList;
-	public ArrayList openBookList() {
-		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(bookFile)))) {
-			bookList = (ArrayList<Book>)ois.readObject();
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return (ArrayList)bookList;
 	}	
 }
