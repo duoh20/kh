@@ -14,8 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import miniproject.library.controller.BookController.BookController;
-import miniproject.library.model.Book.Book;
+import miniproject.library.controller.BookController;
+import miniproject.library.model.Book;
 
 public class BookListPanel extends JPanel {
 
