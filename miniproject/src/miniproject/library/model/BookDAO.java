@@ -14,9 +14,9 @@ import java.util.List;
 public class BookDAO {
 	
 	File bookFile = new File("bookFile.txt");
-
+	
 	public BookDAO() {
-	List bookList = new ArrayList<>();
+		List bookList = new ArrayList<>();
 	}
 	
 	public void hasFile() {

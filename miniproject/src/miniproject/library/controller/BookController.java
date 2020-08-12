@@ -88,13 +88,9 @@ public class BookController {
 	public Book rentBook(String bookID) {
 		for(int i = 0; i < bookList.size(); i++) {
 			Book book = (Book)bookList.get(i);
-			System.out.println(i + " 탐색 중");
 			if(book.getBookID().equals(bookID)) {
-				System.out.println("객체 탐색 성공");
 				if(book.getIsRentalable()) {
-					System.out.println("대여 여부 확인 성공");
 					book.setIsRentalable(false);
-					System.out.println("대여 상태 변경 성공");
 					System.out.println(book);
 					bd.saveBookList(bookList);
 					return book;
@@ -104,15 +100,20 @@ public class BookController {
 		return null;
 	}
 	
-	//반납하기 //확인 필요!
+	//반납하기
 	public List returnBook(List rentalList, String bookID) {
 		List updateList = new ArrayList(5);
 		for(int i = 0; i < rentalList.size(); i++) {
 			Book book = (Book)rentalList.get(i);
-			if(!book.getBookID().equals(bookID)) {
-				updateList.add(rentalList.get(i));
+			if(book.getBookID().equals(bookID)) {
+				for(int j = 0; j < bookList.size(); j++) {
+					if(((Book)bookList.get(j)).getBookID().equals(bookID)) {
+						((Book)bookList.get(j)).setIsRentalable(true);
+						break;
+					}
+				}
 			} else {
-				book.setIsRentalable(true);
+				updateList.add(rentalList.get(i));
 			}
 		}
 		bd.saveBookList(bookList);
