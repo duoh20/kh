@@ -24,6 +24,7 @@ public class BookController {
 
 	// bookList.txt에 담긴 정보 출력
 	public void readBookList() {
+		bookList = bd.openBookList();
 		for (int i = 0; i < bookList.size(); i++) {
 			System.out.println(bookList.get(i));
 		}

@@ -14,7 +14,6 @@ public class Test {
 		List bl = bd.openBookList();
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println(bl);
 		System.out.println();
 		
 		System.out.print("책 id 입력 :");
