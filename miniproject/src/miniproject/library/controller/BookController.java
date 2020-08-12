@@ -26,8 +26,18 @@ public class BookController {
 			System.out.println(bookList.get(i));
 		}
 	}
+	
+	//bookID로 책 검색 (+ 책 ID 생성 시 중복 체크 메소드로 사용)
+	public boolean searchBookByBookID(String bookID) {
+		for(int i = 0; i < bookList.size(); i++) {
+			if(((Book)bookList.get(i)).getBookID().equals(bookID)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-	//책 title로 책 검색
+	//title로 책 검색
 	public List searchBookByTitle(String title) {
 		List result = new ArrayList();
 		for(int i = 0; i < bookList.size(); i++) {
@@ -39,28 +49,116 @@ public class BookController {
 		return result;
 	}
 
-	//책 author로 책 검색
-	public List searchBookByAuthor(String Author) {
+	//author로 책 검색
+	public List searchBookByAuthor(String author) {
 		List result = new ArrayList();
 		for(int i = 0; i < bookList.size(); i++) {
 			Book b = (Book)bookList.get(i);
-			if(b.getAuthor().equals(Author)) {
+			if(b.getAuthor().equals(author)) {
 				result.add(b);
 			}
 		}
 		return result;
 	}
 	
-	//bookID로 책 검색
-	public List searchBookByBookID(String bookID) {
+	//category로 책 검색
+	public List searchBookByCategory(String category) {
 		List result = new ArrayList();
 		for(int i = 0; i < bookList.size(); i++) {
 			Book b = (Book)bookList.get(i);
-			if(b.getBookID().equals(bookID)) {
+			if(b.getCategory().equals(category)) {
 				result.add(b);
 			}
 		}
 		return result;
+	}
+	
+	//대여 가능한 책 검색
+	public List searchBookByRentalable(boolean isRentalable) {
+		List result = new ArrayList();
+		for(int i = 0; i < bookList.size(); i++) {
+			if(((Book)bookList.get(i)).getIsRentalable()) {
+				result.add((Book)bookList.get(i));
+			}
+		}
+		return result;
+	}
+	
+	//대여하기
+	public Book rentBook(String bookID) {
+		for(int i = 0; i < bookList.size(); i++) {
+			Book book = (Book)bookList.get(i);
+			System.out.println(i + " 탐색 중");
+			if(book.getBookID().equals(bookID)) {
+				System.out.println("객체 탐색 성공");
+				if(book.getIsRentalable()) {
+					System.out.println("대여 여부 확인 성공");
+					book.setIsRentalable(false);
+					System.out.println("대여 상태 변경 성공");
+					System.out.println(book);
+					bd.saveBookList(bookList);
+					return book;
+				}
+			}
+		}
+		return null;
+	}
+	
+	//반납하기 //확인 필요!
+	public List returnBook(List rentalList, String bookID) {
+		List updateList = new ArrayList(5);
+		for(int i = 0; i < rentalList.size(); i++) {
+			Book book = (Book)rentalList.get(i);
+			if(!book.getBookID().equals(bookID)) {
+				updateList.add(rentalList.get(i));
+			} else {
+				book.setIsRentalable(true);
+			}
+		}
+		bd.saveBookList(bookList);
+		return updateList;
+	}
+	
+	//책 제목 수정
+	public boolean updateBookTitle(String bookID, String newTitle) {
+		if(searchBookByBookID(bookID)) {
+			for (int i = 0; i < bookList.size(); i++) {
+				if(((Book)bookList.get(i)).getBookID().equals(bookID)) {
+					((Book) bookList.get(i)).setTitle(newTitle);
+				}
+			}
+		bd.saveBookList(bookList);
+		return true;
+		}
+		return false;
+	}
+	
+	//책 작가 수정
+	public boolean updateBookAuthor(String bookID, String newAuthor) {
+		if(searchBookByBookID(bookID)) {
+			for (int i = 0; i < bookList.size(); i++) {
+				if(((Book)bookList.get(i)).getBookID().equals(bookID)) {
+					((Book) bookList.get(i)).setAuthor(newAuthor);
+				}
+			}
+			bd.saveBookList(bookList);
+			return true;
+		}
+		return false;
+	}
+	
+	//책 카테고리 수정
+	public boolean updateBookCategory(String bookID, String newCategory) {
+		if(searchBookByBookID(bookID)) {
+			for (int i = 0; i < bookList.size(); i++) {
+				if(((Book)bookList.get(i)).getBookID().equals(bookID)) {
+					((Book) bookList.get(i)).setCategory(newCategory);
+				}
+			}
+			bd.saveBookList(bookList);
+			return true;
+		}
+		return false;
 	}
 
 	//책 정보를 담은 bookList를 String타입의 2차원 배열로 변경

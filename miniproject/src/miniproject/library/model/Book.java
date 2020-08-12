@@ -12,7 +12,7 @@ public class Book implements Serializable{
 	private String title;
 	private String author;
 	private String category;
-	private boolean isRentalable;
+	private boolean isRentalable = true; //true  대여가능, false 대여불가
 	
 	public Book() {}
 	
