@@ -1,23 +1,17 @@
-package miniproject.library.model;
+package model.dao;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.vo.Book;
 
 public class BookDAO {
 	
 	File bookFile = new File("bookFile.txt");
-	List bookList = new ArrayList<>();
 	
 	public BookDAO() {
-		if(!bookFile.exists()) {
+		if( !bookFile.exists()) {
 			try {
 				bookFile.createNewFile();
 			} catch (IOException e) {
@@ -25,15 +19,17 @@ public class BookDAO {
 			}
 		}
 	}
-
+	
+	@SuppressWarnings("rawtypes")
 	public void saveBookList(List bookList) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(bookFile))){
-				oos.writeObject(bookList);
+			oos.writeObject(bookList);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public List openBookList() {
 		List bookList = new ArrayList<>();
 		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(bookFile)))) {

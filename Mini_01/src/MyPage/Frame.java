@@ -1,4 +1,4 @@
-package miniproject.library.view;
+package MyPage;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 public class Frame extends JFrame {
 		
 	public Frame() {
-		super("도서관리 프로그램");
 		setSize(800, 800);
 		setLayout(null);
 

@@ -1,13 +1,8 @@
-package miniproject.library.view;
+package MyPage;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,8 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import miniproject.library.controller.BookController;
-import miniproject.library.model.Book;
+import Contoller.BookController;
+
+
 
 public class BookListPanel extends JPanel {
 
@@ -28,8 +24,8 @@ public class BookListPanel extends JPanel {
 		setBackground(Color.pink);
 		
 		String[] header = {"bookId", "title", " author", "category", "isRentalable"};
-		//Object[][] data = bc.listBookInfo();
-		Object[][] data = {{"b0001", "아프리카 청춘이다", "BJ대도", "Y"},{"b0002", "마라샹궈의 역사", "왕차이", "Y"}};
+		Object[][] data = bc.listBookInfo();
+		
 		
 		JLabel firstTitle = new JLabel("내가 대여한 책");
 		firstTitle.setBounds(10, 10, 700, 30);
