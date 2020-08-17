@@ -35,7 +35,7 @@ public class BookDAO {
 		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(bookFile)))) {
 			bookList = (List)ois.readObject();
 		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		return bookList;
 	}	

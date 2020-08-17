@@ -27,9 +27,8 @@ public class BookListPanel extends JPanel {
 		setSize(800, 800);
 		setBackground(Color.pink);
 		
-		String[] header = {"bookId", "title", " author", "category", "isRentalable"};
-		//Object[][] data = bc.listBookInfo();
-		Object[][] data = {{"b0001", "아프리카 청춘이다", "BJ대도", "Y"},{"b0002", "마라샹궈의 역사", "왕차이", "Y"}};
+		String[] header = {"ID", "책 제목", "저자", "장르", "대여여부"};
+		Object[][] data = bc.listBookInfo();
 		
 		JLabel firstTitle = new JLabel("내가 대여한 책");
 		firstTitle.setBounds(10, 10, 700, 30);

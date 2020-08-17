@@ -10,18 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-import Contoller.MemberController;
 import MyPage.Frame;
 import admin.page3;
+import controller.BookController;
+import controller.MemberController;
 import model.vo.Member;
 
 public class Login2 extends JPanel{
 
 	private Menu frame ;
 	MemberController mc = new MemberController();
+	BookController bc = new BookController();
 	
-	public Login2(Menu frame, Member v) {
+	public Login2(Menu frame, Member v, String id) {
 		
 		this.frame = frame;
 		
@@ -50,7 +51,12 @@ public class Login2 extends JPanel{
 		frame.add(this);
 		
 		
-		System.out.println(v);
+	
+		
+		
+		
+		
+		
 		
 		if(v!=null) {
 			
@@ -102,8 +108,19 @@ public class Login2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Frame page = new Frame();
-				Dialog dialog = new Dialog(page , "회원 설정");
+				
+				int result = JOptionPane.showConfirmDialog(null, "이 기능은 미구현 입니다. \n 프로토타입의 기능을 확인 했습니다. \n 실행 시키시겠습니까? \n( 아니오를 누르시면 미구현 기능이 실행됩니다. )" , "확인창", JOptionPane.YES_NO_OPTION);
+				
+				if(result == 0 ) {
+					Admin page = new Admin(id); 
+					Dialog dialog = new Dialog(page , "관리자 설정");
+				}
+				else {
+					Frame page = new Frame(id);
+					Dialog dialog = new Dialog(page , "회원 설정");
+				}
+//				Admin page = new Admin(id); 
+//				Dialog dialog = new Dialog(page , "관리자 설정");
 			}
 		});
 		
@@ -112,100 +129,16 @@ public class Login2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				
 				page3 page=new page3(); 
 				Dialog dialog = new Dialog(page , "관리자 설정");
 				
 			
 				
-//				dialog.setLayout(new FlowLayout(FlowLayout.CENTER) );
-//				dialog.setBounds(150,250,400,600);
-//				
-//				
-//				JLabel bookname = new JLabel("책 이름 : ");
-//				
-//				bookname.setLocation(20,100);
-//				bookname.setSize(100,40);
-//				
-//				dialog.add(bookname); 
-//				
-//				
-//				JTextField bookname2 = new JTextField(25);
-//				bookname2.setBounds(90,100,250,40);
-//				dialog.add(bookname2);
-//				
-//				
-//				
-//				JLabel author = new JLabel("작가 명 : ");
-//				
-//				author.setLocation(20,150);
-//				author.setSize(100,40);
-//				
-//				dialog.add(author);
-//				
-//				 
-//				JTextField author2 = new JTextField(25);
-//				author2.setBounds(90,150,250,40);
-//				dialog.add(author2);
-//				
-//				
-//				JLabel price = new JLabel("가     격 : ");
-//				
-//				price.setLocation(20,200);
-//				price.setSize(100,40);
-//				
-//				dialog.add(price);
-//				
-//				
-//				JTextField price2 = new JTextField(25);
-//				price2.setBounds(90,200,250,40);
-//				dialog.add(price2);
-//				
-//				
-//				
-//				
-//				JButton bookAdd = new JButton("추가");
-//				bookAdd.setBounds(230,260,90,30);
-//				dialog.add(bookAdd);
-//				
-//
-//				JButton cancel = new JButton("취소");
-//				cancel.setBounds(110,260,90,30);
-//				dialog.add(cancel);
-//				
-//				dialog.setVisible(true);
-//				
-//				
-//				
-//				
-//			
-//				
-//				
-//				bookAdd.addActionListener(new ActionListener() {
-//					
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//						String s = price2.getText();
-//						
-//						Book b = new Book(bookname2.getText(), author2.getText(),  price2.getText() );
-//						bc.insertBook(b);
-//						System.out.println(b);
-//						bc.Save();
-//						
-//						
-//						
-//						dialog.dispose();
-//						
-//					}
-//				});
-//				
-//				cancel.addActionListener(new ActionListener() {
-//					
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//						
-//						dialog.dispose();
-//					}
-//				});
+				
+				
+
 //
 			}
 			

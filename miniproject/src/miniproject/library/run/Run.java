@@ -1,7 +1,6 @@
 package miniproject.library.run;
 
 import miniproject.library.view.BookView;
-import miniproject.library.view.MainFrame;
 
 public class Run {
 		

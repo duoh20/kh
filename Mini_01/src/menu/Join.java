@@ -1,6 +1,5 @@
 package menu;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,8 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
-import Contoller.MemberController;
+import controller.MemberController;
 import model.vo.Member;
 
 public class Join extends JPanel {
@@ -99,10 +97,12 @@ public class Join extends JPanel {
 				System.out.println("가입 정보" +id2.getText()+ name2.getText()+phone2.getText());
 
 				System.out.println(id2.getText());
+				
 			
 			
 				if (mc.join(id2.getText(),m) && (id2.getText() != null)) {
 					System.out.println("성공적으로 회원가입 완료하였습니다.");
+					
 					
 					
 				} else {

@@ -64,10 +64,6 @@ public class Book implements Serializable{
 		this.author = author;
 	}
 	
-	public String getCategoty() {
-		return category;
-	}
-	
 	public void setCategory(String category) {
 		this.category = category;
 	}

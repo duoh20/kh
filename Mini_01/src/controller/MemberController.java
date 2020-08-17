@@ -1,6 +1,5 @@
-package Contoller;
+package controller;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +44,7 @@ public class MemberController {
 		if(!mlist.containsKey(id)) {
 			
 			mlist.put(id, m);
-			System.out.println(id+" " + m);
-			
+			md.saveMemberList(mlist);
 			
 			return true;
 			
@@ -61,7 +59,7 @@ public class MemberController {
 	public Member logIn(String id) {
 //		HashMap<String , Member> mlist =  mdao.mlist;
 		
-		System.out.println((Member)mlist.get(id));
+		
 		
 		if(mlist.containsKey(id)) {
 			
@@ -100,7 +98,36 @@ public class MemberController {
 
 	
 	
-
+	public String suchName(Member m) {
+		
+		Set set = mlist.keySet();
+		
+		Iterator it = set.iterator();
+		
+		
+			
+			
+				
+		
+		
+		if(mlist.containsValue(m)) {
+			
+			while(it.hasNext()) {
+			String key = (String) it.next();
+			
+//			String s = (String) mlist.get( (String )getKey(mlist,m));
+			
+			System.out.println();
+//			return s;
+		}
+			
+	}
+		
+		
+	return null;
+		
+		
+	} 
 	
 	
 }
