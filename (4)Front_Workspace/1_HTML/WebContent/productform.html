@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>producform.html</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>납품자 정보</legend>
+			<ol>
+				<li>납품자명: <input type="text" name="name" placeholder="name"></li>
+				<li>email: <input type="email" name="email" placeholder="answs@naver.com"></li>
+				<li>홈페이지: <input type="url" name="url" placeholder="http://"></li>
+			</ol>
+		</fieldset>
+		<fieldset>
+			<legend>납품자 정보</legend>
+			<ul>
+				<li>납품자명: <input type="text" name="product"></li>
+				<li>납품수량: <input type="text" name="amount" placeholder="최소 100" size="10" minlength="3"></li>
+				<li>납품등급: <input type="range" value="50"></li>
+				<li>기타사항: <textarea></textarea></li>
+			</ul>
+		</fieldset>
+		<input type="submit" name="sendInfo" value="send message">
+	</form>
+</body>
+</html>

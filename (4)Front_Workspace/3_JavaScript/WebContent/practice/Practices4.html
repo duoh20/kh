@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practices4</title>
+<style>
+	fieldset{
+		width: 450px;
+	}
+	div{
+		width: 480px;
+		min-height: 100px;
+		border: 1px solid gray;
+	}
+</style>
+</head>
+<body>
+	<form>
+	<fieldset>
+		<legend>구매 정보</legend>
+		<ul id="info">
+			<li>구매자 : <input type="text" size="30" id="userName" placeholder="구매자의 이름을 입력하세요"></li>
+			<li>상품명 : <input type="text" size="30" id="item" placeholder="상품명을 입력하세요"></li>
+			<li>가격 : <input type="text" size="30" id="price" placeholder="가격을 입력하세요"></li>
+			<li>구매 수량 : <input type="number" id="amount" style="width: 60px;" placeholder="최소 10" min="10" max="100" step="10" onclick="stepTen()"></li>
+			<li>납품 등급 : <input type="range" id="level" min="1" max="9" step="2" value="1"></li>
+			<li>기타사항 : <textarea id="note" cols=38 rows="6"></textarea>
+		</ul>
+	</fieldset>
+	</form>
+	<br>
+	<button>입력 값 출력하기</button><br><br>
+	<div id='resultBox'></div>
+	<script>
+		function printInfo(){
+			var result = '구매자 명: ' + document.getElementById('userName').value + '님<br>' + '상품명 : ' + document.getElementById('item').value + '<br>' + document.getElementById('price').value + '만원<br>' + '구매 수량' + document.getElementById('amount').value + '개<br>' + '납품등급 : ' + document.getElementById('level').value + '등급<br>' + '기타사항 : ' + document.getElementById('note').value 
+		
+			document.getElementById('resultBox').innerHTML = result;
+		}
+	</script>
+</body>
+</html>

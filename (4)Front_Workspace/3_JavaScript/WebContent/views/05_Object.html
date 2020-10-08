@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_Object</title>
+</head>
+<body>
+	<h1>객체 선언 및 호출</h1>
+	<hr><hr>
+
+	<h2>객체 선언 및 호출</h2>
+	<p>
+		중괄호 {}를 사용하여 객체를 생성하고, 속성에는 모든 자료형이 올 수 있음<br>
+		객체는 키 값을 이용해 속성 식별
+	</p>
+	<button onclick="test1()">실행확인</button>
+	<script>
+		function test1(){
+		//자바스크립트의 객체는 {}로 선언하며 Map 방식으로 저장함
+			var product = {
+				pName: 'Dry Mango',
+				type: 'Pickle',
+				ingredient: ['mango', 'sugar'],
+				origin: 'Philippines',
+				//pName: 'computer' 같은 속성을 중복 입력하면 뒤에 추가한 값으로 덮여씌여짐
+			};
+
+			console.log(product);
+			
+			//속성 명으로 접근하기 1: []
+			console.log('product["pName"] : ' + product["pName"]);
+			console.log('product["type"] : ' + product["type"]);
+			console.log('product["ingredient"] : ' + product["ingredient"]);
+			console.log('product["origin"] : ' + product["origin"]);
+
+			//속성 명으로 접근하기 2: .
+			console.log('product.pName : ' + product.pName);
+			console.log('product.type : ' + product.type);
+			console.log('product.ingredient : ' + product.ingredient);
+			console.log('product.origin : ' + product.origin);
+		}
+	</script>
+
+	<h3>객체의 키 식별자 테스트</h3>
+	<p>
+		객체의 키는 모든 문자열 사용 가능<br>
+		식별자로 사용할 수 없는 단어를 키로 사용한 경우,<br>
+		무조건 []를 사용해야 객체 요소에 접근 가능
+	</p>
+	<button onclick="test2();">실행확인</button>
+	<script>
+		function test2(){
+			var objTest = {
+				'hun$gry' : 'KH정보교육원',
+				'hun_gry' : 'G강의장',
+				'I am hungry' : '박신우'
+			};
+			console.log('objTest["hun$gry"] : ' + objTest['hun$gry']);
+			console.log('objTest["hun_gry"] : ' + objTest['hun_gry']);
+			console.log('objTest["I am hungry"] : ' + objTest['I am hungry']);
+			
+			//객체의 키 이름으로 어떤 특수문자, 띄어쓰기가 들어가도 상관 없지만, 속성을 통해 value 값을 가져올 때, $나 _외에 다른 특수 문자가 있다면 .을 이용한 접근이 불가능하고 [] 이용한 접근 가능하다.
+			console.log('objTest.hun$gry : ' + objTest.hun$gry);
+			console.log('objTest.hun_gry : ' + objTest.hun_gry);
+			//console.log('objTest.I am hungry : ' + objTest.I am hungry);
+		}
+	</script>
+
+	<h3>객체의 메소드 속성</h3>
+	<p>객체의 속성 중 함수 자료형인 속성을 메소드라 함</p>	
+	<button onclick="test3();">실행확인</button>
+	<script>
+		function test3(){
+			var dog = {
+				name1: '모모',
+				name2: '이든',
+				eat: function(food){
+					console.log(this.name1 + '와 '
+								+ this.name2 + '이가 '
+								+ food + "를 먹는 중");
+				}
+			}
+			dog.eat('사료');
+		}
+	</script>
+
+	<h3>객체와 반복문</h3>
+	<p>객체의 속성을 살펴볼 때는 단순 for문으로는 불가능 하고 for in문을 사용해야 함</p>
+	<button onclick='test4();'>실행확인</button>
+	<script>
+		function test4(){
+			var movie = {
+				title : '다만 악에서 구하소서',
+				releaseDate : '2020년-08-05',
+				director: '홍원찬',
+				mainActor: ["황정민", "이정재", "박정민", "박소이"],
+				screening: true
+			}
+
+			console.log(movie);
+			console.log(movie.length); //length 결과가 없음, for문으로 접근 불가 for in문 사용
+
+			for(var i in movie){
+				console.log(i); //키 값이 출력됨
+				console.log(i + " : " + movie[i]);
+			}
+		}
+	</script>
+
+	<h2>객체 속성 추가 및 제거</h2>
+	<p>
+		처음 객체 생성 이후 속성을 추가한다거나 제거하는 것을 '동적으로 속성을 추가/제거한다'라고 함
+	</p>
+	<button onclick="test5();">실행확인</button>
+	<script>
+		function test5(){
+			var student = {};
+			console.log(student);
+
+			student.name='박신우';
+			student.hobby = '누워있기';
+			student.strength = '프로그래밍';
+			student.dream = '돈 많은 백수';
+			console.log(student);
+
+			student.toString = function(){
+				var str = "";
+				for(var key in this){
+					if(key != 'toString'){
+						str += key + " : " + this[key];
+					}
+				}
+				return str;
+			}
+
+			console.log(student);
+			console.log(student.toString());
+
+			delete(student.hobby);
+			console.log(student);
+		}
+	</script>
+
+	<h2>객체 배열</h2>
+	<h3>객체와 배열을 사용한 데이터 관리</h3>
+	<button onclick="test6();">실행확인</button>
+	<script>
+		function test6(){
+			var student0 = {name: '강건강', java:15, oracle:84, JDBC:71, HTML5:80, CSS3:71, JavaScript:57};
+			var student1 = {name: '남나눔', java:45, oracle:54, JDBC:16, HTML5:88, CSS3:16, JavaScript:25};
+			var student2 = {name: '도대담', java:81, oracle:87, JDBC:61, HTML5:10, CSS3:61, JavaScript:96};
+			var student3 = {name: '류라라', java:35, oracle:51, JDBC:31, HTML5:14, CSS3:31, JavaScript:27};
+			var student4 = {name: '문미미', java:75, oracle:66, JDBC:87, HTML5:19, CSS3:87, JavaScript:69};
+			var student5 = {name: '박보배', java:15, oracle:48, JDBC:34, HTML5:70, CSS3:34, JavaScript:16};
+			var student6 = {name: '송성실', java:35, oracle:89, JDBC:86, HTML5:95, CSS3:86, JavaScript:49};
+			var student7 = {name: '윤예의', java:73, oracle:53, JDBC:13, HTML5:68, CSS3:13, JavaScript:73};
+			var student8 = {name: '정재주', java:13, oracle:78, JDBC:25, HTML5:30, CSS3:25, JavaScript:47};
+			var student9 = {name: '채침착', java:65, oracle:14, JDBC:70, HTML5:70, CSS3:37, JavaScript:83};
+
+			var students = [];
+			//push() 값을 끝에 집어넣는 함수
+			students.push(student0);
+			students.push(student1);
+			students.push(student2);
+			students.push(student3);
+			students.push(student4);
+			students.push(student5);
+			students.push(student6);
+			students.push(student7);
+			students.push(student8);
+			students.push(student9);
+
+			console.log(students);
+
+			//각 객체에 메소드 추가
+			for(var i in students){
+				students[i].getSum = function(){
+					return this.java + this.oracle + this.JDBC + this.HTML5 + this.CSS3 + this.JavaScript;
+				}
+
+				students[i].getAvg = function(){
+					return this.getSum() / 6;
+				}
+
+				console.log(students[i].name + ", 총점 : " + students[i].getSum() + ", 평균 : " + students[i].getAvg());
+			}
+		}
+	</script>	
+</body>
+</html>

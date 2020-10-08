@@ -68,8 +68,6 @@ public class ScoreFrame extends JFrame {
 		public ScoreFrame$ActionHandler() {}
 		
 		public void actionPerformed(ActionEvent event) {
-			//버튼 클릭시 자바와 sql필드에 입력된 값을 읽어
-			//총점과 평균에 계산한 값 출력
 		if(event.getSource() == calcBtn) {
 			int a = Integer.parseInt(score.getText());
 			int b = Integer.parseInt(sqlScore.getText());

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_3_Descendants</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+	.highlight_0{background: red;}
+	.highlight_1{background: orange;}
+	.highlight_2{background: yellow;}
+	.highlight_3{background: green;}
+	.highlight_4{background: blue;}
+</style>
+</head>
+<body>
+	<h1>객체 조작</h1>
+
+	<h2>기본설정</h2>
+	<h3>each()</h3>
+	<p>
+		배열을 관리하는 for in문과 비슷한 메소드로 객체나 배열의 요소 검사<br>
+		<br>
+		$.each(배열(객체)명,function(index, item){});<br>
+		$(선택자).each(function(index, item){});<br>
+		index : 배열의 인덱스 또는 객체의 키<br>
+		item : 해당 인덱스나 키가 가진 값을 보관하는 변수(객체), .으로 속성 접근
+	</p>
+	<div id="urlDiv"></div>
+	<script>
+		var arr = [ //배열[] 안에 객체배열{} 생성
+			{name: 'naver', link: 'https://naver.com'},
+			{name: 'google', link: 'https://google.com'},
+			{name: 'w3c', link: 'https://w3c.org'},
+			{name: 'w3cschool', link: 'https://w3cschools.com'}
+		];
+
+		$(function(){
+			var output = '';
+
+			$.each(arr, function(index, item){
+				console.log(index);
+				console.log(item);
+
+				output += '<h4><a href="' + item.link + '">'
+				+ item.name + '</a></h4>';
+			});
+
+			$('#urlDiv').html(output);
+		//document.getElementById('urlDiv').innerHTML = output;
+		//html() : 선택된 요소의 content 영역을 리턴하거나 설정하는 메소드
+		//		html 태그를 태그로 인식
+		});
+	</script>
+
+	<div id="itemDiv">
+		<h4>item-0</h4>
+		<h4>item-1</h4>
+		<h4>item-2</h4>
+		<h4>item-3</h4>
+		<h4>item-4</h4>
+	</div>
+	<script>
+		$(function(){
+			$('#itemDiv').children().each(function(index, item){
+				console.log(index);
+				console.log(item);
+
+				$(this).addClass('highlight_' + index);
+				//addClass() : 선택된 요소에 클래스 속성 추가
+			});
+		});
+	</script>
+
+	<h3>noConflict()</h3>
+	<p>
+		많은 자바스크립트 라이브러리가 $를 함수, 변수로 사용하고 있기 때문에 jQuery 라이브러리와 충돌하는 경우가 있음<br>
+		이를 방지하기 위해 noConflict 메소드를 이용해 새로운 별칭 부여<br>
+		또, 다른 버전의 jQuery와 $ 충돌 방지를 위해 사용
+	</p>
+	<script>
+		// var jq = $.noConflict();
+		// //$대신 jq를 사용, 이전에 $를 사용했던 명령은 모두 효력을 상실한다.
+
+		// jq(function(){
+		// 	jq('h1').css('color', 'red');
+		// 	jq('h3').css('color', 'blue');
+		// });
+	</script>
+
+	<h2>객체 생성 및 제거</h2>
+	<ul id="names">
+		<li id="nam">남나눔</li>
+		<li id="ryu">류라라</li>
+		<li id="mun">문미미</li>
+		<li id="song">송성실</li>
+	</ul>
+	<button onclick="addElement();">요소추가</button>
+
+	<script>
+		function addElement(){
+			// //append() : 마지막에 추가
+			// $('#names').append("<li id='yoon'>윤예의</li>");
+			
+			// //appendTo() : 매개변수에 요소명을 추가
+			// $("<li id='yoon‘>윤예의</li>").appendTo('#names');
+
+			////prepend() : 맨 앞에 추가
+			//$('#names').prepend("<li id='yoon‘>윤예의</li>");
+			//$("<li id='yoon‘>윤예의</li>").prependTo('#names');
+
+			////before() : 요소 앞에 추가
+			//$('#song').before("<li id='park'>박보배</li>");
+			//$("<li id='park'>박보배</li>").insertBefore('#song')
+
+			////after() : 요소 뒤에 추가
+			//$('#nam').after("<li id='do'>도대담</li>");
+			// $("<li id='do'>도대담</li>").insertAfter('#nam');
+		}
+	</script>
+
+	<h3>요소 복사</h3>
+	<script>
+		$(function(){
+			console.log($('#urlDiv').clone());
+
+			//clone() : 요소를 복제
+			$('#urlDiv').clone().appendTo('#itemDiv');
+			//---------복사대상			   --------붙여 넣을 곳
+		});
+	</script>
+
+	<h3>요소 삭제</h3>
+	<div id="colorDiv1" class="colorDiv">
+		<ul id="colorUl1">
+			<li>pink</li>
+			<li>skyblue</li>
+			<li>yellow</li>
+			<li>yellowgreen</li>
+		</ul>
+	</div>
+	<button onclick="return1();">되돌리기1</button>
+
+	<div id="colorDiv2" class="colorDiv">
+		<ul id="colorUl2">
+			<li>pink</li>
+			<li>skyblue</li>
+			<li>yellow</li>
+			<li>yellowgreen</li>
+		</ul>
+	</div>
+	<button onclick="return2();">되돌리기2</button>
+
+	<div id="colorDiv3" class="colorDiv">
+		<ul id="colorUl3">
+			<li>pink</li>
+			<li>skyblue</li>
+			<li>yellow</li>
+			<li>yellowgreen</li>
+		</ul>
+	</div>
+	<button onclick="return3();">되돌리기3</button>
+
+	<script>
+		var removeVal;
+		var detachVal;
+		var emptyVal;
+
+		$(function(){
+			//각 li에 마우스를 올리면 글자는 하얗게, 배경은 내용대로
+			//li에 마우스가 벗어나면 원래대로 돌아오게 만들기
+
+
+			$('.colorDiv').find('li').mouseover(function(){
+				var color = $(this).text();
+				$(this).css({'color':'white', 'background':color});
+			}).mouseout(function(){
+				$(this).css({'color':'black', 'background':'white'});
+			});
+			
+			removeVal = $('#colorUl1').remove();
+			detachVal = $('#colorUl2').detach();
+			emptyVal = $('#colorUl3').empty();
+
+			console.log(removeVal);
+			console.log(detachVal);
+			console.log(emptyVal);
+		});
+
+		function return1() {
+			$('#colorDiv1').html(removeVal);
+			//데이터 형태로 유지는 되나 이벤트는 전부 제거됨
+		}
+
+		function return2() {
+			$('#colorDiv2').html(detachVal);
+			// 데이터 형태와 이벤트 모두 유지됨
+			// 화면에서 제거했다가 추후 재삽입을 해도 사용 가능
+		}
+
+		function return3() {
+			$('#colorDiv3').html(emptyVal);
+		}
+	</script>
+</body>
+</html>

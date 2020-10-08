@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>06_이미지관련</title>
+</head>
+<body>
+	<h1>이미지 관련 태그</h1>
+	<P>src 속성에 경로를 설정하여 이미지 파일을 불러옴</P>
+	<img src="sample/image/river1.PNG" />
+	이미지 태그는 inline 요소이며 닫기 태그가 없는 태그이다.
+	<hr>
+	<h2>자주 사용하는 속성들</h2>
+	<h3>alt속성</h3>
+	<p>
+	 	사진의 경로가 잘못 되었거나 이미지를 제대로 표시할 수 없는 경우 대체 텍스트의 용도 사용 가능<br>
+	 	화면 낭독기는 이미지를 읽을 수 없기 때문에 대체되는 텍스트가 필요한데 이때도 사용됨
+	</p>
+	<img src="sampie/image/river1.PNG"	width="250px" heighr="200px">
+										alt="이미지 설명"/> 
+	<br>
+	<h3>width와 height의 속성</h3>
+	<p> 사진의 높이와 너비 지정 가능(고정 단위 크기, 가변 단위 크기)</p>
+	<h4>고정 크기 단위 : 화면의 사이즈 크기가 바뀌어도 크기가 변하지 않는다.</h4>
+	<img src="sample/image/flower1.PNG" width="200px" height="150px">
+	<img src="sample/image/flower2.PNG" width="200px" height="150px">
+	<img src="sample/image/flower3.PNG" width="200px" height="150px">
+	<img src="sample/image/flower4.PNG" width="200px" height="150px">
+	<img src="sample/image/flower5.PNG" width="200px" height="150px">
+	
+	<h4>가변 크기 단위 : 화면의 사이즈에 따라 크기가 변경된다.</h4>
+	<img src="sample/image/flower1.PNG" width="15%" height="150px">
+	<img src="sample/image/flower2.PNG" width="15%" height="150px">
+	<img src="sample/image/flower3.PNG" width="15%" height="150px">
+	<img src="sample/image/flower4.PNG" width="15%" height="150px">
+	<img src="sample/image/flower5.PNG" width="15%" height="150px">
+	
+	<hr>
+	<h4>이미지 구역을 2개로 나누어 각각 링크 설정</h4>
+	<!-- img와 map을 연결해주는 작업이 필요함
+	map 이름을 설장한 후 이미지와 연관 시켜줌 -->
+	<img src="sample/image/river1.PNG" usemap="#ourImageMap">
+	<map name="ourImageMap">
+		<area shape="rect" coords="0, 0, 300, 500" href="https://www.naver.com" target="_self"> <!--  x좌표, y좌표, 가로, 세로" -->
+		<area shape="rect" coords="300, 0, 600, 500" href="https://www.google.com" target="_blank">
+	</map>
+</body>
+</html>

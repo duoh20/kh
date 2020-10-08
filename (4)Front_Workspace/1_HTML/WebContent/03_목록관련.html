@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03_목록관련</title>
+</head>
+<body>
+	<h2>순서 없는 목록 태그</h2>
+	<h3>화면 구현 수업 내용</h3>
+	<!-- 불릿기호는 css로 변경 가능, 들여쓰기 하면 불릿 모양이 바뀜 -->
+	<ul>
+		<li>
+		HTML5
+			<ul>
+				<li>글자관련</li>
+				<li>목록관련</li>
+			</ul>
+		</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ul>
+	
+	<h2>순서 있는 목록 태그</h2>
+	<h3>화면 구현 수업 내용</h3>
+	<!-- 숫자는 속성을 이용해서 변경 가능, 들여쓰기 해도 숫자 모양이 바뀌지 않음 -->
+	<ol>
+		<li>
+		HTML5
+			<ol>
+				<li>글자관련</li>
+				<li>목록관련</li>
+			</ol>
+		</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	
+	<h3>속성 변경 연습</h3>
+	<h4>영문 소문자로 표기</h4>
+	<ol type="a"> <!--  a부터 시작해 번호 매김 -->
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	<h4>영문 대문자로 표기</h4>
+	<ol type="A"> <!-- A부터 시작해 번호 매김 -->
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	<h4>로마 소문자로 표기</h4>
+	<ol type="i">
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	<h4>로마 대문자로 표기</h4>
+	<ol type="I">
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	
+	<h4>시작 값 변경하기</h4>
+	<ol start="5">
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	
+	<h4>숫자 및 시작값 변경</h4>
+	<ol type="i" start="3">
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	
+	<h4>역순으로 항목 번호 표시하기</h4>
+	<ol reversed start="2"> <!-- 혹은 revered="reversed"로 작성 -->
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+	</ol>
+	
+	<hr>
+	
+	<h2>설명 목록 태그</h2>
+	<dl>
+		<dt>목록의 제목 작성</dt>
+		<dd>목록에 대한 설명 작성</dd>
+		<dd>설명은 여러 줄 작성 가능</dd>
+		<dd>목록 별로 설명 행의 개수를 다르게 적을 수 있음</dd>
+		<dt>제목2</dt>
+		<dd>내용2</dd>
+		<dt>제목3</dt>
+		<dd>내용3</dd>
+	</dl>
+	
+</body>
+</html>

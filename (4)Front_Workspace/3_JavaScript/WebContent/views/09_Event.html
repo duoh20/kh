@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>09_Event</title>
+<style>
+	.area{border: 1px solid salmon; min-height: 100px;}
+	table{text-align: center;}
+	th{border: 1px solid gray; width: 100px;}
+</style>
+</head>
+<body>
+	<h1>이벤트</h1>
+	<h2>이벤트 설정 방법</h2>
+	<h3>고전 이벤트 모델</h3>
+	<button id="test1">test1() 실행확인</button>
+	<button id="test2">test2() 실행확인</button>
+	<script>
+		var test1 = document.getElementById('test1');
+		var test2 = document.getElementById('test2');
+
+		test1.onclick = function(){ //test1 버튼 속성 중 onclick 속성에 함수 세팅
+			console.log('test1이 실행되었습니다.');
+		}
+		test2.onclick = function(){
+			console.log('test2가 실행하면 test1의 onclick 이벤트를 삭제했습니다.');
+			//고전 이벤트 모델에서 속성을 제거하려면 속성 값을 null로 설정한다.
+			test1.onclick = null; //onclick에 설정된 속성 제거
+		}
+	</script>
+	<h4>이벤트 발생 객체</h4>
+	<button id='test3'>test3() 실행확인</button>
+	<script>
+		var btn = document.getElementById('test3');
+		//버튼을 눌렀을 때 버튼에 대한 배경색이 검은색, 글자색은 하얀색으로 변경
+		btn.onclick = function(){
+			console.log(btn);
+			btn.style.backgroundColor ='black';
+			btn.style.color ='white';
+		}
+	</script>
+
+
+	<h3>인라인 모델</h3>
+	<button onclick='test4();'>test4() 실행확인</button>
+	<script>
+		function test4(){
+			alert('test4()가 실행되었습니다.');
+		}
+	</script>
+	<button onclick="alert('test4()가 또 실행되었습니다.')">test4() 실행확인</button>
+
+
+	<h3>표준 이벤트 모델</h3>
+	<button id="test5">test5() 실행확인</button>
+	<button id="test6">test6() 실행확인</button>
+	<script>
+		var t5 = document.getElementById('test5');
+		var t6 = document.getElementById('test6');
+
+		function fn_test5_1(){
+			console.log('test5가 클릭되었습니다.'); //클릭했을 때 동작 정의
+		}
+		function fn_test5_2(){
+			console.log('test5에 들어왔습니다.'); //마우스 오버했을 때 동작 정의
+		}
+
+		t5.addEventListener('click', fn_test5_1);
+		t5.addEventListener('mouseover', fn_test5_2);
+
+		t6.addEventListener('click', function(){
+			console.log('test6이 실행되면서 test5의 click 이벤트 제거');
+			t5.removeEventListener('click', fn_test5_1);
+		});
+
+		t6.addEventListener('mouseover', fn_test5_2);
+	</script>
+
+	<h2>기본 이벤트 제거1</h2>
+	<form>
+		이름: <input type="text" name="name" id="name"><br>	
+		아이디: <input type="text" name="userId"  id="userId"><br>	
+		비밀번호: <input type="text" name="password" id="password"><br>	
+		비밀번호 확인: <input type="text" name="passwordConfirm" id="passwordConfirm">
+		<input type="submit" value="제출" onclick="return test7();">
+		<!-- test7()의 유효성 검사 후 논리값을 반환하여 false일 경우 제출하지 않게함-->
+	</form>
+	<script>
+		function test7(){
+			var name = document.getElementById("name").value;
+			var userId = document.getElementById("userId").value;
+			var password = document.getElementById("password").value;
+			var password2 = document.getElementById("passwordConfirm").value;
+		
+			if(password == password2){ //유효성 검사
+				//통과
+				alert('비밀번호가 일치합니다.');
+				return true;
+			} else {
+				//불통
+				alert('비밀번호가 틀립니다.');
+				document.getElementById('passwordConfirm').select(); //포커스를 비밀번호 확인창으로 이동
+				return false;
+			}
+		}
+	</script>
+	
+	<h2>기본 이벤트 제거2</h2>
+	<form onsubmit="return test8();">
+		이름: <input type="text" name="name" id="name2"><br>	
+		아이디: <input type="text" name="userId"  id="userId2"><br>	
+		비밀번호: <input type="text" name="password" id="password2"><br>	
+		비밀번호 확인: <input type="text" name="passwordConfirm" id="passwordConfirm2">
+		<input type="submit" value="제출">
+		<!-- test7()의 유효성 검사 후 논리값을 반환하여 false일 경우 제출하지 않게함-->
+	</form>
+	<script>
+		function test8(){
+			var name = document.getElementById("name2").value;
+			var userId = document.getElementById("userId2").value;
+			var password = document.getElementById("password2").value;
+			var password2 = document.getElementById("passwordConfirm2").value;
+		
+			if(password == password2){ //유효성 검사
+				//통과
+				alert('비밀번호가 일치합니다.');
+				return true;
+			} else {
+				//불통
+				alert('비밀번호가 틀립니다.');
+				document.getElementById('passwordConfirm').select(); //포커스를 비밀번호 확인창으로 이동
+				return false;
+			}
+		}
+	</script>
+
+
+
+</body>
+</html>

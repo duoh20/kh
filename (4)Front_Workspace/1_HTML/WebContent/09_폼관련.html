@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>09_폼 관련</title>
+</head>
+<body>
+	<h1>폼 관련 태그</h1>
+	<p>
+		form 태그는 html에서 사용자가 입력할 수 있는 양식을 제공하는 태그로<br>
+		form 태그 내의 input 태그들을 통해 사용자가 입력한 정보를 서버로 넘기는 역할을 함<br>
+		* action 속성: 폼에 입력된 값들을 전송받을 서버의 클래스 명 입력<br>
+		* method 속성: get/post 방식으로 전송 방식 지정(디폴트: get 방식)
+	</p>
+	<form method="get" action="https://en.dict.naver.com/#/search">
+	<!-- <from>태그 설정 안하면 아무 액션도 일어나지 않음,  -->
+	<!-- name에 데이터를 어떤 변수에 담아서 보낼 건지를 명시 -->
+		검색할 내용: <input type="text" size="20" name="query" placeholder="검색어를 입력해주세요.">
+		<input type="submit" value="검색">
+	</form>
+	<p>submit버튼을 눌렀을 때 method에 지정된 방식으로 action에 지정한 경로에 input 태그의 값 전달</p>
+	<hr>
+	<form>
+		<fieldset>
+		<!-- fieldset은 영역 구분, legend는 feildset의 제목을 작성하는 부분
+			 회원 정보 입력창 등 구분 지을 때 사용 -->
+			<legend>필드셋의 제목을 작성하는 부분</legend>
+				메인 1: <input type="text"><br>
+				메인 2: <input type="text"><br>
+				메인 3: <input type="text"><br>	
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend>필드셋으로 묶은 영역</legend>
+				서브 1: <input type="text"><br>
+				서브 2: <input type="text"><br>
+				서브 3: <input type='text'>
+				<!--  작은 따옴표도 사용 가능 -->
+		</fieldset>
+	</form>
+	
+	<hr>
+	
+	<h2>text와 관련된 input태그 속성</h2>
+	<form>
+		<h3>hidden : 사용자 눈에는 안 보이지만 값을 담고 보낼 수 있음</h3>
+		<!-- 소스코드에는 표시되므로 주의 -->
+		<input type="hidden" value="khacademy">
+		
+		<h3>text: 한 줄짜리 텍스트를 입력할 수 있는 텍스트 상자</h3>
+		<!--  아이디 : <input type="text" name="userId" size="30" maxlength="15" value="khacademy" autofocus readonly> -->
+		아이디 : <input type="text" name="userId" size="30" maxlength="15" placeholder="아이디를 입력하세요">
+		<h3>password : 비밀번호를 입력할 수 있는 텍스트 상자</h3>
+		비밀번호 : <input type="password" name="userPwd" placeholder="비밀번호를 입력해주세요.">
+		
+		<h3>button, submit, reset</h3>
+		<input type="button" value="바꿀 버튼 이름 입력">
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+		<!-- 작용 범위는 같은 form안에 포함된 input 요소 -->
+		
+		<h3>button 태그를 이용해 버튼 만들기</h3>
+		<button type="button">버튼명 입력</button>
+		<button type="submit">전송</button>
+		<button type="reset">취소</button>
+		<!-- form 내부에서 쓰이면 submit의 역할을 하므로, 일반 버튼처럼 사용하려면 type을 button으로 또 다시 설정해줘야함 -->
+	</form>
+	
+	<h2>라디오 버튼과 체크박스</h2>
+	<form>
+		<h3>radio</h3>
+		성별 :
+		<input type="radio" id="male" name="gender" value="M" checked multiple>남
+		<input type="radio" id="female" name="gender" value="F">여
+		<!-- name으로 그룹을 지어주지 않으면 하나씩 체크되는 옵션 작동 안함, 꼭 name을 지정해주자 -->
+		
+		<h3>체크박스</h3>
+		취미 :
+		<input type="checkbox" id="baseball" name="hobby"  checked>야구
+		<input type="checkbox" id="basketball" name="hobby" value="basketball">농구
+		<input type="checkbox" id="football" name="hobby" value="football">축구
+		<!-- name을 작성하지 않으면 전송 안됨, value를 빼면 기본 값인 on으로 전송되어 무슨 값을 선택했는지 알 수 없음 -->
+		<br>
+		<button type="submit">전송</button>
+	</form>
+	
+	<h2>file과 image</h2>
+	<form>
+		<h3>file</h3>
+		<!-- 외부에서 직접 로컬에 접속하여 보안성이 뛰어난 편, 파일 이름으로 값 전송 -->
+		<!-- accept: 선택 가능한 확장자 제한(디폴트는 모두 선택 가능)/ multiple 파일 다중 선택 허용 -->
+		파일 선택 : <input type="file" name="file" accept=".PNG" multiple>
+		<input type="submit"ska valu="전송">
+		<h3>image</h3>
+		<!-- 이미지 형태 버튼, 이미지의 어떤 부분을 클릭했는지 좌표 데이터 전송 -->
+		<input type="image" src="sample/image/flower1.PNG">
+	</form>
+	
+	<h2>HTML5 태그</h2>
+	<!-- HTML5에 들어서 새로 생긴 태그 -->
+	<form>
+		<h3>search, url, email, tel</h3>
+		검색 : <input type="search" name="searchText"><br>
+		홈페이지 : <input type="url" name="searchText"><br>
+		이메일 : <input type="email" name="searchText"><br>
+		전화번호 : <input type="tel" name="searchText"><br>
+		<!--
+			search: 검색 상자에 전체 삭제 버튼 생성
+			url: http://로 시작하는지 유효성 검사
+			email: @가 없는지 유효성 검사
+			tel: 키패드가 숫자로 바뀜
+		 -->
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+	</form>
+	
+	<h2>숫자 관련 input 태그</h2>
+	<form>
+		<h3>number</h3>
+		수량 : <input type="number" name="amount" min="0" max="100" step="5" value="0">
+		<h3>range</h3>
+		점수 : <input type="range" name="point" min="0" max="100" step="10" value="50">
+		<br>
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+	</form>
+	
+	<h2>날짜 관련 input 태그</h2>
+	<form>
+		<h3>date, month, week, time, datetime-local</h3>
+		date : <input type="date" name="date"><br>
+		month : <input type="month" name="month"><br>
+		week : <input type="week" name="week"><br>
+		time : <input type="time" name="time"><br>
+		datetime-local : <input type="datetime-local" name="datetime-local"><br>
+	</form>
+	
+	<form>
+		<h3>color</h3>
+		<input type="color" name="color">
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+	</form>
+	
+	<form>
+		<h2>select 태그와 option 태그</h2>
+		국적 :
+		<select name="nation" size="2" multiple>
+		<!--  drop dwon 박스 생성 value 설정 O: value 값(ex.ko) / value 설정 X : 항목 값(ex.한국)으로 전송 -->
+			<option value="ko" selected>한국</option>
+			<option value="jp">일본</option>
+			<option value="ch">중국</option>
+			<option value="un">미국</option>
+		</select>
+		<br>
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+	</form>
+	
+	<h2>textarea</h2>
+	<textarea rows="5" cols="30">기본적으로 입력해주고 싶은 값</textarea>
+	<textarea rows="5" cols="30" style="resize: none" placeholder="placeholder 가능!"></textarea>
+</body>
+</html>

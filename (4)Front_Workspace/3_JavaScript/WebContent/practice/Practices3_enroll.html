@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practices3_enroll</title>
+</head>
+<body>
+	<h1>Practice3-1</h1>
+	<fieldset>
+		<legend>회원가입</legend>
+		아이디 : <input type="text" id="userId" onkeyup="idVali();"><span id="existId"></span><br><br>
+		비밀번호 : <input type="password" id="pwd"><br><br>
+		비밀번호 확인 : <input type="password" id="checkPwd" onkeyup="pwdVali();"><span id="equalsPwd"></span><br><br>
+		이름 : <input type="text" id="name"><br><br>
+		<input type="button" id="joinBtn" value="회원가입">
+	</fieldset>
+
+	<script>
+
+		function idVali(){
+			console.log('go');
+
+			var userId = document.getElementById('userId').value;
+			var existId = document.getElementById('existId');
+
+			if(userId == 'user01') {
+				existId.style.color = 'red';
+				existId.innerHTML = "이미 존재하는 아이디입니다.";
+			} else if(userId  == "" || userId.length == 1){
+				existId.innerHTML = " ";
+			} else {
+				existId.style.color = 'green';
+				existId.innerHTML = "사용 가능한 아이디입니다.";
+			} 
+		}
+
+		function pwdVali(){
+			console.log('고');
+			var pwd = document.getElementById('pwd').value;
+			var checkpwd = document.getElementById('checkPwd').value;
+			var equalsPwd = document.getElementById('equalsPwd');
+
+			if(pwd == checkpwd){
+				equalsPwd.style.color = 'green';
+				equalsPwd.innerHTML = "비밀번호가 일치합니다.";
+			} else {
+				equalsPwd.style.color = 'red';
+				equalsPwd.innerHTML = "비밀번호가 일치하지 않습니다.";
+			}
+		}
+	</script>
+	<hr>
+	<h1>Practice3-2</h1>
+	<fieldset>
+		<legend>회원가입</legend>
+		아이디 : <input type="text" id="userId" onkeyup="idVali();"><span id="existId"></span><br><br>
+		비밀번호 : <input type="password" id="pwd"><br><br>
+		비밀번호 확인 : <input type="password" id="checkPwd2" onkeyup="pwdVali();"><span id="equalsPwd2"></span><br><br>
+		이름 : <input type="text" id="name"><br><br>
+		<input type="button" id="enroll" value="회원가입" onclick="enroll()">
+	</fieldset>
+
+	<script>
+
+		function idVali(){
+			console.log('go');
+
+			var userId = document.getElementById('userId').value;
+			var existId = document.getElementById('existId');
+
+			if(userId == 'user01') {
+				existId.style.color = 'red';
+				existId.innerHTML = "이미 존재하는 아이디입니다.";
+			} else if(userId  == "" || userId.length == 0){
+				existId.innerHTML = "";
+			} else {
+				existId.style.color = 'green';
+				existId.innerHTML = "사용 가능한 아이디입니다.";
+			} 
+		}
+
+		function pwdVali(){
+			var pwd = document.getElementById('pwd').value;
+			var checkpwd = document.getElementById('checkPwd').value;
+			var equalsPwd = document.getElementById('equalsPwd');
+
+			if(pwd == checkpwd){
+				equalsPwd.style.color = 'green';
+				equalsPwd.innerHTML = "비밀번호가 일치합니다.";
+			} else if(checkpwd  == "" || checkpwd.length == 0){
+				equalsPwd.innerHTML = "";
+			} else {
+				equalsPwd.style.color = 'red';
+				equalsPwd.innerHTML = "비밀번호가 일치하지 않습니다.";
+			}
+		}
+
+		function enroll(){
+			var userId = document.getElementById('userId').value;
+			var pwd = document.getElementById('pwd').value;
+			var pwdcheck = document.getElementById('checkPwd').value;
+			var name = document.getElementById('name').value;
+			console.log('a');
+			if(userId == " " || userId.length == 0) {
+				alert("아이디를 입력해주세요.");
+				document.getElementById("userId2").focus();
+			}
+		}
+	</script>
+</body>
+</html>

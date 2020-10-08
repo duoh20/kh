@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>08_DOM</title>
+<style>
+	.area{border: 1px solid salmon; min-height: 100px;}
+	table{text-align: center;}
+	th{border: 1px solid gray; width: 100px;}
+</style>
+</head>
+<body>
+	<h1>DOM</h1>
+	<h2>Node객체</h2>
+	<h3>텍스트 노드가 있는 노드 생성</h3>
+	<button onclick="test1();">실행확인</button>
+	<div class="area" id="area1"></div>
+	<script>
+		function test1(){
+			// 요소 노드 생성
+			var title = document.createElement("h3");
+			// 텍스트 노드 생성
+			var textNode = document.createTextNode('안녕');
+			// 요소 노드에 텍스트 노드 추가
+			title.appendChild(textNode);
+			// 최종적으로 연결될 곳에 추가
+			document.getElementById("area1").appendChild(title); //이미 title이 textNode를 업고 있는 상태이므로, title만 append해준다.
+		}
+	</script>
+
+	<h3>텍스트 노드가 없는 노드 생성</h3> <!-- ex.텍스트 노드가 없는 요소? 이미지 -->
+	<button onclick="test2();">실행확인</button>
+	<div class="area" id="area2"></div>
+	<script>
+		function test2(){
+			// 요소 노드 생성
+			var imgTest = document.createElement('img');
+			// 속성 지정
+			imgTest.src = "https://www.telegraph.co.uk/content/dam/Pets/spark/royal-canin/happy-puppy.jpg?imwidth=1240";
+			imgTest.width = "150";
+			imgTest.height = "100";
+			imgTest.myProperty = "박신우";
+			imgTest.setAttribute("myProperty", "3교시");
+			// 최종적으로 연결될 곳에 추가
+			document.getElementById('area2').appendChild(imgTest); //속성은 setAttribute()로 추가해줄 수 있다.
+
+			console.log(imgTest.getAttribute("src"));
+		}
+	</script>
+
+	<h2>innerHTML</h2>
+	<button onclick="test3();">실행확인</button>
+	<table id="board">
+		<tr>
+			<th>글번호</th>
+			<th>글제목</th>
+			<th>작성자</th>
+			<th>조회수</th>
+			<th>작성일</th>
+		</tr>
+	</table>
+	<script>
+		var board = document.getElementById('board');
+		var num = 1;
+		var title = '제목입니다.';
+		var writer = '운영자';
+		var count = 1;
+		var date = new Date();
+
+		function test3(){
+			//실행확인을 누르면 테이블에 내용을 추가하는 함수 생성
+			//"실행확인"을 누르면 table의 행이 늘어나니까 table에 접근한다.
+
+			board.innerHTML += "<tr><td>" + num + "</td>"
+								 + "<td>" + title + "</td>"
+								 + "<td>" + writer + "</td>"
+								 + "<td>" + count + "</td>"
+								 + "<td>" + date.getFullYear() + "-" + (date.getMonth() + 1) /* month는 0부터 시작하므로 +1 해줘야함 */ + "-" + date.getDate() + "</td></tr>"
+			num++;
+		}
+	</script>
+
+	<h2>스타일 지정</h2>
+	<button onclick="test4();">실행확인</button>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4() {
+			//CSS에서 -로 구분하는 속성명은 JS에서는 -를 빼고 대문자로 치환해서 사용해야한다. (ex. font-weight는 JS에서 fontWeight와 같이 입력)
+			var area = document.getElementById('area4');
+			//div 배경을 coral 색으로 변경하기
+			area.style.backgroundColor = 'coral';
+			//div 모서리를 100px 둥글게 변경하기
+			area.style.borderRadius = '100px';
+			area.style.transition = "all 2s";
+		}
+	</script>
+
+	<h2>노드 삭제</h2>
+	<button onclick="test5()">실행확인</button>
+	<div class="area" id="area5"></div>
+	<script>
+		function test5(){
+			document.getElementById('area5').remove();
+		}
+	</script>
+</body>
+</html>

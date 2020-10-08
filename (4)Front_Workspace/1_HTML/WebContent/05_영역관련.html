@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_영역 관련 태그</title>
+</head>
+<body>
+	<h1>영역 관련 태그</h1>
+	<h2>div와 span</h2>
+	<h3>div태그</h3>
+	<div style="border: 1px solid black; height: 100px; width: 100px">첫 번째 영역</div>
+	<div style="border: 1px solid black; height: 100px; width: 100px">두 번째 영역</div>
+	<div style="border: 1px solid black; height: 100px; width: 100px">세 번째 영역</div>
+	
+	<h3>span태그</h3>
+	<span style="border: 1px solid black; height: 100px; width: 100px">첫 번째 영역</span>
+	<span style="border: 1px solid black; height: 100px; width: 100px">두 번째 영역</span>
+	<span style="border: 1px solid black; height: 100px; width: 100px">세 번째 영역</span>
+	<!-- 인라인 요소는 높이와 넓이 설정 불가, 블록 요소만 가능 -->
+	<!-- 단, css에서 인라인 요소를 블록 요소로 바꾸거나, 블록 요소를 인라인 요소로 바꾸거나 혼합해서 사용 가능 -->
+	
+	<hr>
+	
+	<h2>iframe</h2>
+	<h3>다른 페이지를 보여주는 태그</h3>
+	<h3>접근할 페이지에서 접근을 허용해야 보여줄 수 있음</h3>
+	<iframe width="854" height="480" src="./04_표관련.html"></iframe>
+	<iframe width="854" height="480" src="https://www.youtube.com/embed/gbpZ3lCd50g"></iframe>
+	<iframe width="854" height="480" src="https://naver.com"></iframe>
+
+	<hr>
+	
+	<h2>시맨틱 태그</h2>
+	<p>
+		컴퓨터는 단순 문장이나 문장 위치, 모양만으로는 내용을 이해하기 힘드므로<br>
+		컴퓨터가 각 문장에 대한 의미를 이해할 수 있도록 요소를 사용해 명확하게 나타내기 위함
+	</p>
+	
+	<header>
+		<h1>header</h1>
+		body 안에 사용하며 여러 번 사용 가능<br>
+		웹 문서에서 머리말 영역을 나타낼 때 사용(제목, 제목 설명, 문장 등을 나타내는 요소 포함)
+	</header>
+	<nav>
+		<span>menu1</span>
+		<span>menu2</span>
+		navigation, 웹 문서 내 다른 웹 문서나 문서 내 다른 부분으로 이동하는 부분을 나타내고자할 때 사용
+	</nav>
+	<aside>
+		<h4>aside</h4>
+		웹 문서의 광고나 링크 모음 같은 부가적인 정보를 구분하기 위해 사용
+	</aside>
+	<section>
+		<article>
+			<h4>article</h4>
+			웹 문서에 주요 내용을 가진 본문을 나타낼 때 사용
+			실제로 나타대고자 하는 내용을 가지고 있으므로 기계에 중요한 부분으로 인
+			(여러 개 article 가능)
+		</article>
+		<article>
+			<h4>article2</h4>
+		</article>
+		section: 비슷한 그룹이나 절 또는 문서를 묶기 위해 사용
+	</section>
+	<footer>
+		footer, 2020-09-09, 박신우
+		<br>웹 문서의 저자 정보, 저작권 정보, 이용 조건 등을 나타내기 위해 사용
+	</footer>
+</body>
+</html>

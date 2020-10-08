@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_4_Sideways</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+	.wrap, .wrap *{
+		border: 1px solid lightgray;
+		display: block;
+		padding: 5px;
+		margin: 15px;
+	}
+
+	.type{width: 500px;}
+</style>
+</head>
+<body>
+	<h1>객체 탐색</h1>
+	<h2>순회(탐색) 메소드</h2>
+	<h3>Sideways 메소드</h3>
+	<div class="wrap">div(parent)
+		<p>p</p>
+		<span>span</span>
+		<h4>h4</h4>		
+		<h5>h5</h5>
+		<p>p</p>		
+	</div>
+	<script>
+		$(function(){
+			// siblings() : 선택된 요소와 같은 레벨에 있는 요소(전후 상관 X)
+			$('h4').siblings().css({'color':'red', 'border':'2px solid red'});
+
+			$('h4').siblings('p').css({'color':'blue', 'border':'2px solid blue'});
+
+			//next(): 선택된 요소의 같은 레벨의 형제 중 선택 요소 다음 한개 요소
+			$('h4').next().css('font-size', '3em');
+
+			//nextAll(): 선택된 요소의 같은 레벨의 형제 중 선택 요소 다음 모든 요소
+			$('h4').nextAll().css({'color':'orange', 'border':'2px solid orange'});
+
+			// nextUntil() : 선택된 요소부터 같은 레벨의 인자 범위까지의 모든 요소 지정 요소는 포함되지 않음
+			$('h4').nextUntil('p').css('border', 'dashed');
+
+			//prev() : 선택된 요소부터 같은 레벨의 형제 요소 중 이전의 한 개 요소 리턴
+			$('h4').prev().css({'background':'red', 'color':'white'});
+
+			// //prevAll() : 선택된 요소부터 같은 레벨의 형제 요소 중 이전의 모든 요소 리턴
+			$('h4').prevAll().css({'background':'beige', 'color':'red'});
+
+			//prevUntil() : 선택된 요소부터 같은 레벨의 형제 요소들 중 인자로 전달된 요소 이전의 요소 리턴
+			$('h4').prevUntil('p').css('border', 'dashed');
+		});
+	</script>
+</body>
+</html>

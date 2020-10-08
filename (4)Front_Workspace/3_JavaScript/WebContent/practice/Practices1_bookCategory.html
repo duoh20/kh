@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practices1_bookCategorye</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		border-style: none;
+	}
+	body{
+		margin: 10px;
+	}
+	h1{
+		margin:20px 0px;
+	}
+	hr{
+		margin: 10px 0px;
+	}
+	fieldset{
+		padding: 15px;
+		margin: 15px;
+		width: 80%;
+		border: 1px solid gray;
+	}
+	legend{
+		font-weight: bold;
+		padding: 0px 10px;
+	}
+	input{
+		margin: 8px 5px;
+	}
+	button{
+		border-radius: 20px;
+		width: 100px;
+		height: 25px;
+		margin: 0px 15px;
+	}
+	button:active{
+		background: gold;
+		color: red;
+		font-weight: bold;
+	}
+	.hobby{
+		test-align:right;
+	}
+	#area1{
+		margin: 15px;
+		padding: 15px;
+		width: 80%;
+		min-height: 60px;
+		border: 1px solid orange;
+		color: orange;
+	}
+</style>
+</head>
+<body>
+	<h1>Practice1</h1>
+	<form>
+		<fieldset>
+		<legend>취미</legend>
+			<table>
+				<tr>
+			        <td><input type="checkbox" id="all" value="전체선택" onclick="selectAll()">전체선택</td>
+			        <td><input type="checkbox" name="hobby" value="종합" onclick="selectOne()">종합</td>
+			        <td><input type="checkbox" name="hobby" value="소설" onclick="selectOne()">소설</td>
+			        <td><input type="checkbox" name="hobby" value="시/에세이" onclick="selectOne()">시/에세이</td>
+			        <td><input type="checkbox" name="hobby" value="경제/경영" onclick="selectOne()">경제/경영</td>
+			        <td><input type="checkbox" name="hobby" value="자기계발" onclick="selectOne()">자기계발</td>
+			        <td><input type="checkbox" name="hobby" value="아동" onclick="selectOne()">아동</td>
+			     </tr>
+			     <tr>
+			        <td><input type="checkbox" name="hobby" value="여행" onclick="selectOne()">여행</td>
+			        <td><input type="checkbox" name="hobby" value="과학" onclick="selectOne()">과학</td>
+			        <td><input type="checkbox" name="hobby" value="역사/문화" onclick="selectOne()">역사/문화</td>
+			        <td><input type="checkbox" name="hobby" value="외국어" onclick="selectOne()">외국어</td>
+			        <td><input type="checkbox" name="hobby" value="컴퓨터" onclick="selectOne()">컴퓨터</td>
+			        <td><input type="checkbox" name="hobby" value="만화" onclick="selectOne()">만화</td>
+		        </tr>
+			</table>
+		</fieldset>
+	</form>
+	<button onclick="submit();">카테고리 선택</button>
+	<div id="area1" class="area"></div>
+	<script>
+		var all = document.getElementById('all');
+		var selection = document.getElementsByName('hobby');
+		
+		function selectAll(){
+			if(all.checked) {
+				for(var i = 0; i < selection.length; i++)	{
+					selection[i].checked = true;
+				}
+			} else {
+				for(var i = 0; i < selection.length; i++)	{
+					selection[i].checked = false;
+				}
+			}
+		}
+
+		function selectOne() {
+			var count = 0;
+
+			for(var i in selection) {
+				if(selection[i].checked) {
+					count++;
+				}
+			}
+
+			if(count < 12) {
+				all.checked = false;
+			} 
+			if(count == 12) {
+				all.checked = true;
+			}
+		}
+
+		function submit(){
+			var result = "";
+			
+			for(var i in selection){
+				if(selection[i].checked){
+					result += i + selection[i].value + " ";
+				}
+			}
+
+			var area = document.getElementById('area1');
+			area1.innerHTML = result;
+		}
+	</script>
+</body>
+</html>

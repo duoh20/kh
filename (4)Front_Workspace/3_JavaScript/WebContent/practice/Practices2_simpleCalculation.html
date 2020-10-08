@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practices2_simpleCalculation</title>
+</head>
+<body>
+	<h2>Practice2</h2>
+	<form>
+		<input type="text" id="num1">
+		<select>
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<input type="text" id="num2">
+		<input type="button" value="=" onclick="calc();">
+		<input type="text" id="result">
+	</form>
+	<script>
+		function calc(){
+			var result = document.getElementById('result');
+			var num1 = Number(document.getElementById('num1').value);
+			var num2 = Number(document.getElementById('num2').value);
+			var selection = document.getElementsByTagName('option');
+			var sign;
+
+			for(var i = 0; i < selection.length; i++) {
+				if(selection[i].selected) {
+					sign = selection[i].value;
+					break;
+				}
+			}
+
+			var calcResult;
+			switch(sign){
+				case '+': calcResult = num1 + num2; break;
+				case '-': calcResult = num1 - num2; break;
+				case '*': calcResult = num1 * num2; break;
+				case '/':
+					calcResult = num1 / num2;
+					console.log('% :' + calcResult + " " + typeof(calcResult));
+				case '%':
+					calcResult = num1 % num2;
+					console.log('/  :' + calcResult + " " + typeof(calcResult));
+				}
+			if(calcResult == 'Infinity' || calcResult == '-Infinity' || isNaN(calcResult)) {
+				result.style.color = 'white';
+				result.style.background ='red';
+				result.value = '연산 불가';
+			} else {
+				result.style.color = 'black';
+				result.style.background ='white';
+				result.value = calcResult;
+			}
+		}
+	</script>
+</body>
+</html>

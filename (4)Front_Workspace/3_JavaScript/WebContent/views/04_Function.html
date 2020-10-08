@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_Function</title>
+</head>
+<body>
+	<h1>함수(Function)</h1>
+	<hr>
+	<hr>
+	<h2>함수 선언</h2>
+	<h3>선언적 함수(함수 선언)</h3>
+	<p>function 키워드에 함수 명을 작성하여 사용하는 방법</p>
+	<button onclick="test1();">실행확인</button>
+	<script>
+		function test1(){ //선적 함수
+			alert('test1() 함수 실행');
+		}
+	</script>
+
+	<h3>익명 함수(함수 표현식)</h3>
+	<p>함수명을 작성하지 않고 변수에 대입하는 방법</p>
+	<button onclick="test2();">실행확인</button>
+	<script>
+		var test2 = function(){
+			alert('tset2 함수 실행')
+		}
+	</script>
+
+	<h3>스스로 동작하는 함수</h3>
+	<p>스스로 실행되므로 호출이 따로 필요하지 않음</p>
+	<div style="border: 1px solid yellowgreen; height: 100px;" id="div3"></div>	
+	<script>
+		(function(){
+			document.getElementById('div3').innerHTML = '자동으로 혼자 실행';
+		})();
+	</script>
+
+	<hr>
+
+	<h2>함수 전달 인자와 매개변수</h2>
+	<h3>매개변수로 전달하기
+		<button id="btn1">실행확인</button>
+	<script>
+		function test4(value){
+			console.log(value);
+		}
+
+		document.getElementById('btn1').onclick = function(){
+			//test4(prompt('메세지를 입력하세요'));
+			test4('안녕하세요', '반갑습니다'); // test4 함수는 매개변수를 1개만 가지고 있기 때문에, '안녕하세요'만 콘솔에 보임, 단 초과한 변수는 에러를 유발하지 않고 무시되며 인자로 저장된다.
+			test4(); //매개변수를 입력해주지 않아도 undifined로 실행된다.
+		}
+	</script>
+
+	<h3>가변인자 함수 테스트</h3>
+	<button onclick="test5();">실행확인</button>
+	<script>
+		function test5(value){
+			sumAll(1, 2, 3, 4, 5, 6, 7, 8 , 9, 10);
+			sumAll(11, 22, 33, 44, 55);
+		}
+
+		function sumAll(){
+			console.log(arguments);
+
+			var sum = 0;
+			for(var i = 0; i < arguments.length; i++) {
+				sum += arguments[i];
+			}
+		}
+	</script>
+
+	<h3>함수의 리턴 처리</h3>
+	<button onclick="test6();">실행확인</button>
+	<script>
+		function test6(){//js는 리턴 값이 존재해도 반환 타입이 없음
+			var result = returnFunction();
+			console.log(result);
+		}
+
+		function returnFunction(){
+			return Math.floor(Math.random() * 100) + 1 ; //임의의 숫자 하나 리턴
+		}
+	</script>
+
+	<h3>매개 인자를 스스로 전달하기</h3>
+	<p>this를 통해 전달 가능,<br>
+	여기서 this는 window 객체가 아닌 element</p>
+	<button onclick="test7('this');">JavaScript</button>
+	<button onclick="test7('this');">jQuery</button>
+	<script>
+		////방법1:
+		////html의 button에 매개변수를 test7('JavaScript'), test7('jQuery')로 입력해줌
+		// function test7(value){
+		// 	//누른 버튼에 따라
+		// 	// 오늘 배울 내용은 ***입니다 라고 alert 띄우기(XXX = Javascript / jQuery
+		// 	alert('오늘 배울 내용은 ' + value + '입니다.');
+		// }
+
+		//방법2
+		function test7(value){
+			console.log(value); //this는 나 자신을 넘겨줌
+			var subject = value.innerText; //.innerText은 요소의 텍스트를, .innerHTML은 HTML요소를 모두 가져옴
+			alert('오늘 배울 내용은 ' + subject + '입니다.');
+		}
+	</script>
+
+	<h3>매개변수로 함수 전달</h3>
+	<button onclick="test8()">실행 확인</button>
+	<script>
+		function test8(calledFunc){
+			console.log('test8 함수 호출');
+			for(var i = 0; i <= 10; i++){
+				calledFunc(i); //함수 이름에 소괄호를 붙이면 함수가 실행됨
+			}
+		}
+
+		function calledFunc(i){
+			console.log(i + '번째 calledFunc함수 호출');
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+-- DDL: 데이터 정의 언어
+-- 객체를 만들고 수정할 수 있음
+
+-- ALTER : 객체 수정 구문
+-- 컬럼 추가, 수정 , 삭제
+SELECT * FROM DEPT_COPY;
+-- 컬럼 추가
+ALTER TABLE DEPT_COPY
+ADD (CNAME VARCHAR2(20));
+
+SELECT * FROM DEPT_COPY; --> 모든 행이 NULL로 채워진 CNAME 컬럼 생성됨
+
+-- DEFAULT 값을 지정하여 컬럼추가
+ALTER TABLE DEPT_COPY
+ADD (LNAME VARCHAR2(40) DEFAULT '한국');
+
+SELECT * FROM DEPT_COPY; --> 모든 행이 한국으로 채워진 LNAME 컬럼 생성됨
+
+-- 컬럼 수정
+DESC DEPT_COPY;
+ALTER TABLE DEPT_COPY
+MODIFY DEPT_ID CHAR(3)
+MODIFY DEPT_TITLE VARCHAR2(30)
+MODIFY LOCATION_ID VARCHAR2(2)
+MODIFY CNAME CHAR(20)
+MODIFY LNAME DEFAULT '미국';
+DESC DEPT_COPY;
+SELECT * FROM DEPT_COPY; -- LNAME에 저장된 디폴트값 '한국'이 '미국'으로변하지 않은 이유?
+                         --> 앞으로 들어갈 LNAME의 디폴트가 '미국'으로 바뀐 것임, 이미 들어간 데이터에 영향주지 않음
+
+ALTER TABLE DEPT_COPY
+MODIFY DEPT_TITLE VARCHAR2(10);
+--> 10Byte면 한글은 약 3자만 삽입 가능한 크기임
+-- cannot decrease column length because some value is too big
+--> 이미 삽입된 자료가 10Byte를 넘어서서 줄일 수 없다
+
+
+
+
+--------------------------------------------------------------------------------
+-- 컬럼 삭제
+-- 데이터가 기록되어 있어도 삭제됨
+-- 삭제된 컬럼은 복구 불가능
+-- 테이블에는 최소  ________이 존재해야함 : ________ 삭제 불가
+CREATE TABLE DEPT_COPY2
+AS SELECT * FROM DEPT_COPY;
+
+SELECT * FROM DEPT_COPY2;
+
+ALTER TABLE DEPT_COPY2
+DROP COLUMN DEPT_ID;
+
+SELECT * FROM DEPT_COPY2;
+
+ALTER TABLE DEPT_COPY2
+DROP COLUMN LOCATION_ID;
+
+ALTER TABLE DEPT_COPY2
+DROP COLUMN CNAME;
+
+ALTER TABLE DEPT_COPY2
+DROP COLUMN LNAME;
+
+SELECT * FROM DEPT_COPY2;
+
+ALTER TABLE DEPT_COPY2
+DROP COLUMN DEPT_TITLE;
+-- 에러: cannot drop all columns in a table
+--> 1개 이상의 컬럼은 남아있어야함
+
+ROLLBACK;
+SELECT * FROM DEPT_COPY2; --> ROLLBACK 후에도 삭제한 컬럼은 복구 안됨
+
+CREATE TABLE TB1(
+    PK1 NUMBER PRIMARY KEY,
+    COL1 NUMBER,
+    CHECK(PK1 > 0 AND COL1 > 0)
+);
+
+CREATE TABLE TB2(
+    PK2 NUMBER PRIMARY KEY,
+    FK2 NUMBER REFERENCES TB1,
+    COL2 NUMBER,
+    CHECK(PK2 > 0 AND COL2 > 0) 
+);
+
+SELECT * FROM TB2;
+
+ALTER TABLE TB1
+DROP COLUMN PK1;
+-- cannot drop parent key column
+--> PK1을 참조하고 있는 자식 테이블(TB2)이 있어서 삭제할 수 없다.
+
+ALTER TABLE TB2
+DROP COLUMN PK2;
+-- column is referenced in a multi-column constraint
+
+ALTER TABLE TB1
+DROP COLUMN PK1 CASCADE CONSTRAINTS; --> 제약 조건까지 함께 지워버림
+
+SELECT * FROM TB1;
+
+-- 제약 조건 추가하기
+ALTER TABLE DEPT_COPY
+ADD CONSTRAINT DCOPY_DID_PK PRIMARY KEY(DEPT_ID)
+ADD CONSTRAINT DCOPY_DTITLE_UQ UNIQUE(DEPT_TITLE)
+MODIFY LNAME CONSTRAINT DCOPY_LNAME_NN NOT NULL;
+
+-- 제약조건 삭제
+ALTER TABLE DEPT_COPY
+DROP CONSTRAINT DCOPY_DID_PK;
+
+ALTER TABLE DEPT_COPY
+DROP CONSTRAINT DCOPY_DTITLE_UQ
+MODIFY LNAME NULL;
+
+
+-- 컬럼, 제약조건, 테이블 이름 변경
+-- 컬럼 이름 변경
+SELECT * FROM DEPT_COPY;
+
+ALTER TABLE DEPT_COPY
+RENAME COLUMN DEPT_TITLE TO DEPT_NAME;
+
+SELECT * FROM DEPT_COPY;
+
+ALTER TABLE USER_FOREIGNKEY
+RENAME CONSTRAINT SYS_C007090 TO UF_UP_NN;
+
+ALTER TABLE USER_FOREIGNKEY
+RENAME CONSTRAINT SYS_C007091 TO UF_UN_PK;
+
+ALTER TABLE USER_FOREIGNKEY
+RENAME CONSTRAINT SYS_C007092 TO UF_UI_UQ;
+
+
+-- 테이블명 변경
+ALTER TABLE DEPT_COPY
+RENAME TO DEPT_TEST;
+
+
+-- 테이블 삭제 : 제약 조건도 함께 제거됨
+DROP TABLE DEPT_TEST
+CASCADE CONSTRAINTS;

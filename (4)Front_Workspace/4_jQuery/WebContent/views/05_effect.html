@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_Effect</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+	.menu{
+		width: : 300px; height: 30px;
+		background: yellowgreen;
+		border-radius: 10px;
+		text-align: center;
+		border: 1px solid green;
+		cursor: pointer;
+	}
+
+	.contents{
+		border: 1px solid lightgray;
+		width: 300px; height: 200px;
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<h1>효과</h1>
+	<h2>show()와 hide()</h2>
+	<p>
+		문서와 객체를 크게 하며 보여주거나 작게 하며 사라지게 함<br>숨기기 시 원래 요소가 차지하던 공간을 유지 X<br>show()에 매개변수에 숫자를 입력하면 주면 요소가 나타나고 사라지는 속도를 설정할 수 있다.
+	</p>
+	<button id="show">보이기</button>
+	<button id="hide">숨기기</button>
+	<button id="toggle" class="tog">토글이</button>
+	<br>
+	<img src="../images/river1.PNG" alt="river" id="river" class="river">
+	<script>
+		$(function(){
+			$('#show').click(function(){
+				$('#river').show(100);
+			});
+			
+			$('#hide').click(function(){
+				$('#river').hide(900); //숫자가 커질수록 천천히
+			});
+
+			// //1. count이용
+			// var count = 0;
+			// $('#toggle').click(function(){
+			// 	count++;
+			// 	if(count % 2 != 0){
+			// 		$('#river').hide();
+			// 	} else {
+			// 		$('#river').show();
+			// 	}
+			// })
+
+			// //2.display 이용
+			// $('#toggle').click(function(){
+			// 	console.log($('#river').css('display')); //inline
+				
+			// 	if($('#river').css('display') != 'none'){
+			// 		$('#river').hide();
+			// 	} else {
+			// 		$('#river').show();
+			// 	}
+			// });
+
+			//3.toggle 이용
+			$('#toggle').click(function(){
+				$('#river').toggle();
+			});
+		});
+	</script>
+
+
+	<h2>slideDown()과 slideUp()</h2>
+	<div class="menu">첫 번째 메뉴</div>
+	<p class="contents">내용1</p>
+	<div class="menu">두 번째 메뉴</div>
+	<p class="contents">내용2</p>	
+	<div class="menu">세 번째 메뉴</div>
+	<p class="contents">내용3</p>	
+	<div class="menu">네 번째 메뉴</div>
+	<p class="contents">내용4</p>	
+	<div class="menu">다섯 번째 메뉴</div>
+	<p class="contents">내용5</p>
+	<script>
+		$(function(){
+			//메뉴를 클릭하면 해당하는 p태그의 내용이 보이게 만들어라.
+			//모든 메뉴는 menu 클래스이므로 선택
+			$('.menu').click(function(){
+				console.log($(this)); //눌린 요소의 속성 확인
+
+				//방법1) sliseDown/Up 사용
+				////next()는 형제 요소 중 바로 다음 요소
+				// if($(this).next().css('display') == 'none'){
+				// 	$(this).next().slideDown();
+				// } else {
+				// 	$(this).next().slideUp();
+				// }
+
+				//방법2) slideToggle() 사용
+				$(this).next().slideToggle();
+			});
+		});
+	</script>
+
+	<h3>fadeIn()과 fadeOut()</h3>
+	<button id="fadeIn">fadeIn()</button>	
+	<button id="fadeOut">fadeOut()</button>
+	<button id="fadeToggle">fadeToggle()</button>
+	<br>	
+	<img src="../images/flower1.PNG" id="flower">
+	<script>
+		$(function(){
+			$('#fadeIn').click(function(){
+				$('#flower').fadeIn(900);
+			});
+
+			$('#fadeOut').click(function(){
+				$('#flower').fadeOut(300);
+			});
+
+			$('#flower').hover(function(){
+				$(this).fadeTo(700, 0.3); //0에 가까울수록 투명
+			}, function(){
+				$(this).fadeTo(700, 1); //1에 가까울수록 불투명
+			});
+
+			$('#fadeToggle').click(function(){
+				$('#flower').fadeToggle(500);
+			});
+
+		});
+	</script>	
+</body>
+</html>

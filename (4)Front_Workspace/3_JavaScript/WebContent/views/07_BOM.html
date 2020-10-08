@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>07_BOM</title>
+</head>
+<body>
+	<h1>BOM</h1>
+
+	<h2>location 객체</h2>
+	<p>브라우저 주소 표시줄과 관련된 객체</p>
+	<button onclick="testLocation();">실행확인</button>
+	<script>
+		function testLocation(){
+			for(var key in location){
+				console.log(key + " : " + location[key]);
+			}
+		}
+	</script>
+	<h3>location.href</h3>
+	<p>페이지 이동</p>
+	<button onclick="location.href='https://www.naver.com'">네이버로 이동</button>
+	<button onclick="location.href='https://www.google.com'">구글 이동</button>
+	<br>
+	<h3>reload()</h3>
+	<p>페이지를 새로고침하는 메소드</p>
+	<button onclick="location=location">새로고침</button>
+	<button onclick="location.href=location.href">새로고침</button>
+	<button onclick="location.reload();">새로고침</button> <!-- 스크롤 위치 유지하며 새로 고-->
+	<br>
+	<h3>assign()과 replace()</h3>
+	<p>
+		두 메소드 모두 location 자원을 제공한 url의 자원으로 재지정하는 메소드(페이지 이동)<br>
+		replace()는 assign()과 다르게 history 객체에 현재 resource를 남기지 않음
+	</p>
+	<button onclick="location.assign('https://www.google.com')">구글</button>
+	<!-- 원본 히스토리:
+			사이트1 사이트2 사이트3 사이트4
+		 사이트2에서 assign() 활성화(끼워넣기):
+		 	사이트1 사이트2 (구글) 사이트3 사이트4 -->
+	<button onclick="location.replace('https://www.google.com')">구글</button>
+	<!-- 원본 히스토리 :
+			사이트1 사이트2 사이트3 사이트4
+		 사이트2에서 replace() 활성화(대체):
+		 	사이트1 (구글) 사이트3 사이트4 -->
+
+	<h2>navigator 객체</h2>
+	<p>웹 페이지를 실행하고 있는 브라우저에 대한 정보를 가지고 있는 객체</p>
+	<button onclick="testNavigator();">실행확인</button>
+	<script>
+		function testNavigator(){
+			for(var i in navigator){
+				/* 
+					for var i in 배열/객체
+					배열) i == 배열의 index
+					객체) i == 객체의 key
+					* 배열의 요소에 접근하려면 [] 혹은 .으로 접근
+				*/
+				console.log(i + " : " + navigator[i]);
+				// 사용자가 접근한 브라우저에 따라 다른 내용을 제공해야할 때 사용
+			}
+		}
+	</script>
+
+	<h2>history 객체</h2>
+	<p>브라우저 방문 기록과 관련된 객체</p>
+	<button onclick="history.back();">back()</button>
+	<button onclick="history.forward();">forward()</button>
+	<br><br>
+	<input type="number" id="number">
+	<button onclick="testGo();">go()</button>
+	<script>
+		function testGo(){
+			var num = document.getElementById("num").value;
+			history.go(num);
+		}
+	</script>
+	<br><br>
+	<h4>연습문제1</h4>
+	<p>go()를 이용해 back()과 forward() 구현하기</p>
+	<button onclick="history.go(-1)">go back()</button>
+	<button onclick="history.go(1)">go forward()</button>
+
+	<h2>screen 객체</h2>
+	<p>웹 브라우저 화면이 아닌 운영체제 화면(모니터)의 속성을 가지는 객체</p>
+	<button onclick="testScreen();">실행확인</button>
+	<script>
+		function testScreen(){
+			for(var key in screen){
+				console.log(key+ " : " + screen[key]);
+				/* availWidth/Height : 툴바 영역등을 제외한 실제로 사용 가능한 모니터 화면 크기 
+				   width/height : 모니터 화면 크기
+				   colorDepth : 사용가능한 컬러 수
+				*/
+			}
+		}
+	</script>
+</body>
+</html>

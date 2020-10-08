@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_표관련</title>
+<style>
+<!-- 테이블 구조를 나눠두지 않으면, tbody가 기본값임 -->
+	thead{background: yellow;}
+	tbody{background: red;}
+	tfoot{background: yellow;}
+</style>
+</head>
+<body>
+	<h1>기본적인 표 만들기</h1>
+	<table border="1">
+		<caption><b>웹 브라우저의 종류</b></caption>
+		<tr>
+		<!--  th를 입력하면 제목 행으로 인식함 -->
+			<th>브라우저명</th> 
+			<th>제조사</th>
+			<th>홈페이지</th>
+		</tr>
+		<tr>
+			<td>익스플로러</td>
+			<td>MS</td>
+			<td>Microsoft</td>
+		</tr>
+		<tr>
+			<td>크롬</td>
+			<td>google</td>
+			<td>google</td>
+		</tr>
+		<tr>
+			<td>사파리</td>
+			<td>애플</td>
+			<td>apple</td>
+		</tr>
+		<tr>
+			<td>파이어폭스</td>
+			<td>모질라</td>
+			<td>mozilla</td>
+		</tr>
+	</table>
+	<figcaption>figure를 이용 테이블이나 img의 설명이 들어감</figcaption>
+	<figcaption>여러 줄 내용 표시 가능</figcaption>
+	
+	<h1>표의 행과 열 합치기</h1>
+	<h3>회원 정보</h3>
+	<table border="1">
+		<tr>
+			<td rowspan="2" colspan="2" width="130px" height="150px">사진</td>
+			<td width="80px">이름</td>
+			<td width="200px"></td>
+		</tr>
+		<tr>
+			<td>연락처</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td width="70px" height="50px">주소</td>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td height="100px">자기소개</td>
+			<td colspan="3"></td>
+		</tr>
+	</table>
+	
+	<h1>테이블 태그의 구조 설정</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th width="50px">이름</th>
+				<th width="30px">나이</th>
+				<th width="150px">주소</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>박신우</td>
+				<td>20</td>
+				<td>서울시 도봉구 창동</td>
+			</tr>
+			<tr>
+				<td>강건강</td>
+				<td>20</td>
+				<td>경기도 남양주시 지금동</td>
+			</tr>
+			<tr>
+				<td>남나눔</td>
+				<td>4</td>
+				<td>경기도 남양주시 지금동</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">총 인원</td>
+				<td>3명</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

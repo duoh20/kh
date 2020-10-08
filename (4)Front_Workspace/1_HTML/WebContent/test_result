@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+
+    <title>요구사항확인 모범답안</title>
+    <style>
+    #logo{
+    float:left;
+    }
+
+    #login{
+
+    float:right;
+
+    }
+
+    header>h1{
+
+    float:left;
+
+    text-align:center;
+
+    margin-left:30%;
+
+    }
+
+    section.content{
+
+    width:100%;
+
+    height:400px;
+
+    background-color:gray;
+
+    clear: both;
+
+    }
+
+    header>ul{
+
+    clear: both;
+
+    list-style: none;
+
+    }
+
+    header>ul>li{
+
+    margin-right:10%;
+
+    display: inline-block;
+
+    }
+
+    footer{
+
+    width:100%;
+
+    height:80px;
+
+    padding-top:3%;
+
+    background-color:skyblue;
+
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <header>
+
+    <img id='logo' src="http://iei.or.kr/resources/images/common/top_logo.jpg" width=100px height=100px/>
+
+    <h1>MYMain</h1>
+
+    <table id="login">
+
+    <tr>
+
+    <td>아이디</td>
+
+    <td><input type="password" name="pw" id='pw'/></td>
+
+    </tr>
+
+    <tr>
+
+    <td>패스워드</td>
+
+    <td><input type="password" name="pw" id='pw'/></td>
+
+    </tr>
+
+    <tr>
+
+    <td colspan="2">
+
+    <input type="submit" value="로그인"/>
+
+    <input type="reset" value="취소"/>
+
+    </td>
+
+    </tr>
+
+    </table>
+
+    <ul>
+
+    <li>메인</li>
+
+    <li>공지사항</li>
+
+    <li>자유게시판</li>
+
+    <li>갤러리</li>
+
+    <li>회원관리</li>
+
+    <li>채팅하기</li>
+
+    </ul>
+
+    </header>
+
+    <section class='content'>
+
+    content내용
+
+    </section>
+
+    <footer>
+
+    <p align=center>Copyright ⓒ 1998-2019 KH Information Educational Institute All Right Reserved</p>
+
+    </footer>
+
+
+    <h1>CSS3</h1>
+
+<form action="">
+
+<fieldset>
+
+<legend>Step 1: 로그인 정보</legend>
+
+<ol>
+
+<li>
+
+<label for="id">아이디</label>
+
+<input type="text" name="id">
+
+</li>
+
+<li>
+
+<label for="password">비밀번호</label>
+
+<input type="password" name="password">
+
+</li>
+
+<li>
+
+<label for="chkpwd">비밀번호 확인</label>
+
+<input type="password" name="chkpwd">
+
+</li>
+
+<li>
+
+<label for="grade">회원 등급</label>
+
+<input type="text" name="grade" value="준회원">
+
+</li>
+
+</ol>
+
+</fieldset>
+
+<fieldset>
+
+<legend>Step 2: 개인 정보</legend>
+
+<ol>
+
+<li>
+
+<label for="name">이름</label>
+
+<input type="text" name="name" placeholder="5자미만 공백없이">
+
+</li>
+
+<li>
+
+<label for="email">메일 주소</label>
+
+<input type="email" name="email" placeholder="abcd@domain.com">
+
+</li>
+
+<li>
+
+<label for="phone">연락처</label>
+
+<input type="tel" name="phone">
+
+</li>
+
+</ol>
+
+</fieldset>
+
+<fieldset>
+
+<legend>Step 3: 코딩 숙련도(상, 중, 하)</legend>
+
+<ol>
+
+<li><input type="range"></li>
+
+</ol>
+
+</fieldset>
+
+<fieldset>
+
+<input type="submit" value="제출" id="submit_btn">
+
+</fieldset>
+
+</form>
+</body>
+</html>
