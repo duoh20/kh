@@ -1,5 +1,6 @@
 package ncs.test7;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,7 @@ public class ScoreFrame extends JFrame {
 		setLayout(null);	
 		
 		JLabel notion = new JLabel("점수를 입력하세요");
-		notion.setFont(new Font("굴림", Font.PLAIN, 50));
+		notion.setFont(new Font("굴림", Font.PLAIN, 42));
 		notion.setBounds(20, 20, 400, 50);
 		
 		JLabel javaLabel = new JLabel("자바 : ");
@@ -30,8 +31,8 @@ public class ScoreFrame extends JFrame {
 		score.setBounds(60, 90, 120, 30);
 		
 		JLabel sqlLabel = new JLabel("SQL : ");
-		sqlLabel.setBounds(220, 90, 60, 30);
-		sqlScore.setBounds(260, 90, 120, 30);		
+		sqlLabel.setBounds(210, 90, 60, 30);
+		sqlScore.setBounds(250, 90, 120, 30);		
 		
 		calcBtn.setBounds(150, 170, 100, 35);
 		
@@ -41,9 +42,11 @@ public class ScoreFrame extends JFrame {
 		total.setEnabled(false);
 		
 		JLabel averageLabel = new JLabel("평균 : ");
-		averageLabel.setBounds(220, 260, 60, 30);
-		average.setBounds(260, 260, 120, 30);	
+		averageLabel.setBounds(210, 260, 60, 30);
+		average.setBounds(250, 260, 120, 30);	
 		average.setEnabled(false);
+		average.setFont(new Font("굴림", Font.PLAIN, 30));
+		average.setSelectedTextColor(new Color(1));
 		
 		add(notion);
 		add(javaLabel);
@@ -68,6 +71,7 @@ public class ScoreFrame extends JFrame {
 		public ScoreFrame$ActionHandler() {}
 		
 		public void actionPerformed(ActionEvent event) {
+<<<<<<< HEAD
 		if(event.getSource() == calcBtn) {
 			int a = Integer.parseInt(score.getText());
 			int b = Integer.parseInt(sqlScore.getText());
@@ -75,6 +79,15 @@ public class ScoreFrame extends JFrame {
 			total.setText(a + b + "");
 			average.setText((a+b)/2 + "");
 		}
+=======
+			if(event.getSource() == calcBtn) {
+				int a = Integer.parseInt(score.getText());
+				int b = Integer.parseInt(sqlScore.getText());
+				
+				total.setText(a + b + "");
+				average.setText((a+b)/2 + "");
+			}
+>>>>>>> 91622fa8893134b9e02cf2efb1f226cbd4820691
 		}
 	}
 }
