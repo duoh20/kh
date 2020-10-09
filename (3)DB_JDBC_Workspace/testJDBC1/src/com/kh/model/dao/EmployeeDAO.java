@@ -14,10 +14,15 @@ import com.kh.model.vo.Employee;
 
 
 public class EmployeeDAO {
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	String id = "SCOTT";
+	String pwd = "SCOTT";
+	
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rset = null;
-	ArrayList<Employee> list = null; //필드에서 생성하면 메소 안에서 매번 값을 비워줘야하므로 변수만 선언함
+	ArrayList<Employee> list = null; //필드에서 생성하면 메소드 안에서 매번 값을 비워줘야하므로 변수만 선언함
 	
 	public ArrayList<Employee> selectAll() {//외워야함!
 		try {
@@ -33,7 +38,7 @@ public class EmployeeDAO {
 			
 			stmt = conn.createStatement();
 			
-			//SELEC 사용 -> ResultSet 반환 -> executeQury()
+			//SELECT 사용 -> ResultSet 반환 -> executeQury()
 			//DML(INSERT, UPDATE, DELETE) 사용 -> int 반환 -> executeUpdate()
 			
 			rset = stmt.executeQuery(query);
@@ -94,7 +99,7 @@ public class EmployeeDAO {
 			
 			//완성일 경우 statement（） 메소드 사용
 			//stmt = conn.createStatement();
-			pstmt = conn.prepareStatement(pQuery); //conn에 해당 계정의 모든 정보 담김
+			pstmt = conn.prepareStatement(pQuery);
 			pstmt.setInt(1, empNo); //1번째 위치홀더에 empNo를 넣음
 			//rset = stmt.executßeQuery(query);
 			rset = pstmt.executeQuery();
@@ -149,7 +154,7 @@ public class EmployeeDAO {
 //													"SYSDATE, " +
 //													e.getSal() + ", " +
 //													e.getComm() + ", " +
-//													e.getDeptNo()+ ", " + ")";
+//													e.getDeptNo()+ ")";
 			String query = "INSERT INTO EMP VALUES(?, ?, ?, ?, SYSDATE, ? , ?, ?)";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, e.getEmpNo());
