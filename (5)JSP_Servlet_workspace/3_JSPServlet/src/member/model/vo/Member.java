@@ -17,12 +17,14 @@ public class Member {
 	
 	public Member() {}
 	
+	
+	
 	public Member(String userId, String userPwd) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 	}
-
+	
 	public Member(String userId, String userPwd, String userName, String nickName, String phone, String email,
 			String address, String interest) {
 		super();
@@ -35,6 +37,8 @@ public class Member {
 		this.address = address;
 		this.interest = interest;
 	}
+
+
 
 	public Member(String userId, String userPwd, String userName, String nickName, String phone, String email,
 			String address, String interest, Date enrolDate, Date modifyDate, String status) {
