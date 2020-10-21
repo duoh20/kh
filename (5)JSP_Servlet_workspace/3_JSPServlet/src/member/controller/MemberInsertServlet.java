@@ -12,7 +12,7 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 
-@WebServlet("/insert.me")
+@WebServlet(urlPatterns="/insert.me", name="MemberInsertServlet")
 public class MemberInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,8 +20,8 @@ public class MemberInsertServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		request.setCharacterEncoding("UTF-8");
+		// 1. Filter가 없을 때 직접 encoding 설정
+		//request.setCharacterEncoding("UTF-8");
 		
 		String userId = request.getParameter("joinUserId");
 		String userPwd = request.getParameter("joinUserPwd");

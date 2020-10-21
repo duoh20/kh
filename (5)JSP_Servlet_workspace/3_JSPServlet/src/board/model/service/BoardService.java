@@ -120,4 +120,29 @@ public class BoardService {
 		
 		return result;
 	}
+
+	public ArrayList<Attachment> selectThumbnail(int bId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDAO().updateCount(conn, bId);
+		
+		ArrayList<Attachment> list = null;
+		
+		if(result > 0) {
+			list = new BoardDAO().selectThumbnail(conn, bId);
+			
+			if(list != null) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return list;
+	}
 }
