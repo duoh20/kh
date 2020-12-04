@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Board Write Form</title>
+<title>Insert title here</title>
 <style>
 	.outer{
 		width: 800px; height: 500px; background: rgba(255, 255, 255, 0.4); border: 5px solid white;

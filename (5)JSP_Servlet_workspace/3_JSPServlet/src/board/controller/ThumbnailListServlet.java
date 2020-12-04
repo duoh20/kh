@@ -22,9 +22,10 @@ public class ThumbnailListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		BoardService service = new BoardService();
-		 
+		
+		//게시판 리스트 가져오기
 		ArrayList<Board> bList = service.selectTList(1); //게시판 리스트 가져오기
-		ArrayList<Attachment> fList = service.selectTList(2); //파일 리스트 가져오기
+		ArrayList<Attachment> fList = service.selectTList(2); //사진 파일 리스트 가져오기
 		 
 		String page = null;
 		if(bList != null && fList != null) {

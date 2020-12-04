@@ -28,11 +28,14 @@ public class MyFileRenamePolicy implements FileRenamePolicy{
 		} else {
 			ext = "";
 		}
-		
 		String fileName = sdf.format(new Date(currentTime)) + ranNum  + ext; //여기서 Date는 util 패키지의 Date
 		File newFile = new File(originFile.getParent(), fileName);
 		
 		return newFile;
+	
 	}
-
+public static void main(String[] args) {
+	System.out.println(new SimpleDateFormat("yyyy, MM, dd HH:mm:ss").format(new Date()));
+	
+}
 }

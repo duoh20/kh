@@ -36,6 +36,7 @@ public class BoardListServlet extends HttpServlet {
 		listCount = bService.getListCount();
 		
 		//현재 위치한 게시판의 페이지 정보를 가져오기 위한 변수 currentPage에 초기 값 1(페이지) 설정
+		//리스트 페이지로 진입하면 무조건 1페이지로 오므로
 		currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));

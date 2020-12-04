@@ -18,9 +18,9 @@ public class MemberService {
 	
 	public Member loginMember(Member member) {
 		Connection conn = getConnection();
-		MemberDAO mDAO = new MemberDAO();
 		
-		Member loginUser = mDAO.loginMember(conn, member);
+		Member loginUser = new MemberDAO().loginMember(conn, member);
+		
 		close(conn);
 		
 		return loginUser;

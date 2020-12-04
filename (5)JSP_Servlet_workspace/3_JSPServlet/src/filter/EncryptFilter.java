@@ -29,11 +29,10 @@ public class EncryptFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		//ServletRequest equest를 그대로 보내면 암호화가 제대로 적용되 않기 때문에,
+		//ServletRequest request를 그대로 보내면 암호화가 제대로 적용되 않기 때문에,
 		//EncryptWrapper에서 사용하는 HttpServletRequest로 request를 변환해주어야 함
 		HttpServletRequest hsr = (HttpServletRequest)request;
 		EncryptWrapper ew = new EncryptWrapper(hsr);
-		
 		
 		chain.doFilter(request, response);
 	}

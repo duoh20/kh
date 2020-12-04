@@ -6,7 +6,6 @@
 <%
 	Notice notice = new Notice();
 	notice = (Notice)request.getAttribute("notice");
-	System.out.println(notice);
 %>
 
 <!DOCTYPE html>

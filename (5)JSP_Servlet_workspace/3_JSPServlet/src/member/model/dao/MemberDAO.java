@@ -2,6 +2,7 @@ package member.model.dao;
 
 import static common.JDBCTemplate.close;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class MemberDAO {
 		String fileName = MemberDAO.class.getResource("/sql/member/member-query.properties").getPath();
 		
 		try {
-			prop.load(new FileReader(fileName));
+			prop.load(new BufferedReader(new FileReader(fileName)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -29,7 +29,8 @@
 		<br>
 		<h2 align="center">사진 게시판</h2>
 		<div class="thumbnailArea">
-			<% if(bList.isEmpty() || fList.isEmpty()) { %>
+			<% if(bList.isEmpty() || fList.isEmpty()) {
+				System.out.println(bList); %>
 				등록된 사진이 없습니다.
 			<% } else { 
 					for(int i = 0; i < bList.size(); i++) {

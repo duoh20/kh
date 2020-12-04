@@ -59,12 +59,22 @@
 				<div align="center">
 					<% if(loginUser.getUserId().equals(board.getBoardWriter())) { %>
 					<input type="submit" id="updateBtn" value="수정">
-					<input type="button" onclick="deleteBoard();" id="deleteBtn" value="삭제">
+					<input type="button" onclick="deleteBoard()" id="deleteBtn" value="삭제">
 					<% } %>
 					<input type="button" onclick="location.href='<%= request.getContextPath() %>/list.bo'" id="menuBtn" value="메뉴로">
 				</div>
 			</form>
 		</div>
 	</div>
+	
+	<script>
+		function deleteBoard(){
+			var bool = confirm('정말 삭제하시겠어요?');
+			
+			if(bool) {
+				location.href='deleteBoard.bo?bId=<%= board.getBoardId() %>';
+			}
+		}
+	</script>
 </body>
 </html>

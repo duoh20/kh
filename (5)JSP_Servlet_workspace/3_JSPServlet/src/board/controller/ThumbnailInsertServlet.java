@@ -71,7 +71,7 @@ public class ThumbnailInsertServlet extends HttpServlet {
 			String content = multiRequest.getParameter("content");
 			String bWriter = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
-			//System.out.println(title + "," + content);
+			System.out.println(title + "," + content);
 			
 			ArrayList<String> saveFiles = new ArrayList<String>(); //바뀐 파일 이름을 저장할 ArrayList
 			ArrayList<String> originFiles = new ArrayList<String>(); //원본 파일 이름을 저장할 ArrayList
@@ -79,9 +79,10 @@ public class ThumbnailInsertServlet extends HttpServlet {
 			Enumeration<String> files = multiRequest.getFileNames(); //폼에서 전송된 파일 리스트의 이름을 Enumeration에 담아서 반환, iterator와 같음
 			
 			while(files.hasMoreElements()) {
-				String name = files.nextElement(); // !!전송 순서 역순으로 가져옴!! abc로 전송하면 cba순서로 가져옴
+				// !!전송 순서 역순으로 가져옴!! abc로 전송하면 cba순서로 가져옴
+				String name = files.nextElement();
 				
-				if(multiRequest.getFilesystemName(name) != null) { //MyRenamePolicy의 Rename 메소드에서 작성한대로 Rename된 파일명이 null이 아닐 때,
+				if(multiRequest.getFilesystemName(name) != null) { //MyRenamePolicy의 rename 메소드에서 작성한대로 rename된 파일명이 null이 아닐 때,
 					saveFiles.add(multiRequest.getFilesystemName(name)); //바뀐 파일명 가져옴
 					originFiles.add(multiRequest.getOriginalFileName(name)); //원본 파일명 가져옴
 				}
@@ -94,8 +95,6 @@ public class ThumbnailInsertServlet extends HttpServlet {
 			b.setBoardType(2);
 			b.setCategory("10");
 			
-			//System.out.println(saveFiles);
-			//System.out.println(originFiles);
 			ArrayList<Attachment> fileList = new ArrayList<Attachment>();
 			
 			for(int i = originFiles.size() - 1; i >= 0; i--) { //역순으로 for문 실행

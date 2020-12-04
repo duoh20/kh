@@ -16,7 +16,6 @@ public class Attachment {
 	public Attachment() {}
 	
 	public Attachment(int boardId, String changeName) {
-		super();
 		this.boardId = boardId;
 		this.changeName = changeName;
 	}

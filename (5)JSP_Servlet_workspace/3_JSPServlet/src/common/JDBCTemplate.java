@@ -22,7 +22,7 @@ public class JDBCTemplate {
 	public static Connection getConnection() {
 		
 		String fileName = JDBCTemplate.class.getResource("/sql/driver.properties").getPath();
-		//JDB템플릿 안 클리스에서 자원을 경로에서 가져오겠다.
+		//JDB템플릿 안 클래스에서 자원을 경로에서 가져오겠다.
 		
 		//반환할 Connection 객체 생성
 		Connection conn = null;

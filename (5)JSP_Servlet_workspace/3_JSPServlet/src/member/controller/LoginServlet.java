@@ -21,20 +21,17 @@ public class LoginServlet extends HttpServlet {
        
     public LoginServlet() {}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		
-		Member member = new Member(userId, userPwd);
 		//로그인을 시도한 멤버의 ID와 비밀번호를 member 객체에 담음
-
+		Member member = new Member(userId, userPwd);
 
 		Member loginUser = new MemberService().loginMember(member);
 		//로그인 성공한 유저의 모든 정보를 담은 변수 loginUser 생성 
+		
 		if(loginUser != null) { //로그인을 성공한 사람이 있을 때,
 			
 			//로그인한 정보는 request에 담으면 안된다, 한 번 요청으로 사라지기 때문임.
@@ -66,9 +63,6 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

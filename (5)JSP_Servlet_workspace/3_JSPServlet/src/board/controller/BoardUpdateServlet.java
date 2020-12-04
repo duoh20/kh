@@ -24,8 +24,8 @@ public class BoardUpdateServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		
 		Board board = new Board();
+		board.setBoardId(bId);
 		board.setBoardTitle(title);
-		board.setBoardContent(content);
 		board.setBoardContent(content);
 		board.setCategory(category);
 		board.setBoardType(1);
@@ -33,7 +33,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		int result = new BoardService().updateBoard(board);
 		
 		if(result > 0) {
-			response.sendRedirect("detale.bo?bId=" + bId);
+			response.sendRedirect("detail.bo?bId=" + bId);
 		} else {
 			request.setAttribute("mdg", "게시글 수정에 실패했습니다.");
 			response.sendRedirect("WEB-INF/views/common/errorPage.jsp");

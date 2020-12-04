@@ -25,6 +25,7 @@ public class BoardUpdateFormServlet extends HttpServlet {
 		
 		Board board = new BoardService().selectBoard(bId);
 		request.setAttribute("board", board);
+		
 		request.getRequestDispatcher("WEB-INF/views/board/boardUpdateForm.jsp").forward(request, response);
 		
 	}

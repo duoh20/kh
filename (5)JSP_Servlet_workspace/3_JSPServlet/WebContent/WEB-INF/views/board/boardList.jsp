@@ -78,7 +78,7 @@
 			<!-- 이전 페이지로 -->
 			<button onclick="location.href='<%= request.getContextPath() %>/list.bo?currentPage=<%= currentPage - 1 %>'" id="beforeBtn">&lt;</button>
 			<script>
-				//1페이지에서 이전 페이지로 가면 더 이상 이동 불가하므로 비활성화
+				//1 페이지에서 이전 페이지로 가면 더 이상 이동 불가하므로 비활성화
 				if(<%= currentPage %> <= 1){
 					 var before = $('#beforeBtn');
 					 before.attr('disabled', 'true');
