@@ -60,8 +60,10 @@
 	나이: ${ person.nai }<br>
 	<h4>취향 정보</h4>
 	${ person.name }님이 가장 좋아하는 음료 : ${ beverage }<br>
-	${ person.name }님이 가장 좋아하는 물건 : ${ products[0] },
-										 ${ products[1] },
+	${ person.name }님이 가장 좋아하는 음료 : ${ sessionScope.beverage }<br>
+	${ person.name }님이 가장 좋아하는 음료 : ${ applicationScope.beverage }<br>
+	${ person.name }님이 가장 좋아하는 물건 : ${ products[0] }, 
+										 ${ products[1] }, 
 										 ${ products[2] }<br>
 	${ person.name }님이 가장 좋아하는 도서 : ${ book }<br>
 	${ person.name }님이 가장 좋아하는 영화 : ${ movie }<br>

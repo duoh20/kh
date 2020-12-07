@@ -93,3 +93,23 @@ local.properties
 hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
+
+#Server-files
+Servers/
+Servers2/
+apache-tomcat-9.0.38/
+
+#etc
+uploaded_images/
+jspwork/
+
+#OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+/build/
