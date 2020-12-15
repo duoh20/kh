@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>jstl core 라이브러</h1>
+	<h1>jstl core 라이브러리</h1>
 	<p>
 		사용할 태그 라이브러리 선언하기: taglib 지시자 사용<br>
 		prefix: 앞 첨자(접두어), 다른 태그와 구별할 수 있는 name space를 제공(변수같은 역할)<br>

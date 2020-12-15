@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+<!-- 
+	Multiple annotations found at this line:
+	- The content of element type "configuration" must match 
+	 "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)".
+ -->
+ 
+ 	<properties resource="/driver.properties"></properties>
+ 	
+ 	<!-- 마이바티스 설정과 관련된 기본 세팅 선언 -->
+ 	<settings>
+ 		<setting name="jdbcTypeForNull" value="NULL"/>
+ 		<!-- 데이터가 null로 전달이 되었으면 빈칸으로 인지하지 말고 null로 인식해라
+ 		     value에 들어가는 NULL은 무조건 대문자 -->
+ 	</settings>
+ 	
+ 	<typeAliases>
+ 		<typeAlias type="member.model.vo.Member" alias="Member"/>
+ 		<typeAlias type="board.model.vo.Board" alias="Board"/>
+ 		<typeAlias type="board.model.vo.Reply" alias="Reply"/>
+ 		<typeAlias type="board.model.vo.SearchCondition" alias="SearchCondition"/>
+ 	</typeAliases>
+ 	
+	<!-- envireonments : DB에 연결할 설정에 대한 정보 선언 -->
+	<environments default="development">
+	<!-- 연결 설정을 여러 개 생성하여 id로 구분
+		default : 기본으로 연결할 설정 정보를 설정하는 속성 -->
+		
+		<!-- Database 연결할 설정 정보 선언 -->
+		<environment id="development">
+			
+			<!-- 트랜잭션(commit, rollback)을 누가 할 것인가에 대해 설정 -->
+			<!-- 
+				JDBC    : JDBC가 커밋/롤백을 직접 처리하기 위해 사용(수동 commit)
+				MANAGED : 트랜잭션에 대해 직접적인 영향을 행사하지 않는 것을 의미(자동 commit)
+			 -->
+			<transactionManager type="JDBC"/>
+			
+			<!-- 실제 DB 접속에 관한 정보를 넣는 태그 -->
+			<!-- 
+				type : ConnectionPool을 사용할 것인지에 대한 여부
+					UNPOOLED
+					POOLED
+					JNDI
+			 -->
+			 <dataSource type="POOLED">
+			 <!-- 방법1) 연결정보 직접 입력하기 -->
+			 	<!-- <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			 	<property name="username" value="MYBATIS"/>
+			 	<property name="password" value="MYBATIS"/> -->
+			 	<property name="driver" value="${driver}"/>
+			 	<property name="url" value="${url}"/>
+			 	<property name="username" value="${username}"/>
+			 	<property name="password" value="${password}"/>
+			 </dataSource>
+		</environment>
+	</environments>
+
+	
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/board-mapper.xml"/>
+	</mappers>
+	
+</configuration>
