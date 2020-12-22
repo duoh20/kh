@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+  
+  <!-- 1) 암호화 전 로그인 방식 -->
+  <!-- <select id="selectOne" parameterType="member" resultMap="memberResultSet">
+  parameterType는 생략해도 무관
+  	select *
+  	from member
+  	where id = #{id} and pwd= #{pwd} and m_status ='Y'
+  </select> -->
+  
+  <!-- 2) 암호화 후 로그인 방식 -->
+  <select id="selectOne" parameterType="member" resultMap="memberResultSet">
+  	select *
+  	from member
+  	where id = #{id} and m_status ='Y'
+  </select>
+  
+  <resultMap type="Member" id="memberResultSet">
+  	<id property="id" column="id"/>
+  	<result property="pwd" column="pwd"/>
+  	<result property="name" column="name"/>
+  	<result property="email" column="email"/>
+  	<result property="gender" column="gender"/>
+  	<result property="age" column="age"/>
+  	<result property="phone" column="phone"/>
+  	<result property="address" column="address"/>
+  	<result property="enrollDate" column="enroll_date"/>
+  	<result property="updateDate" column="update_date"/>
+  	<result property="mStatus" column="m_status"/>
+  </resultMap>
+  
+  
+  <insert id="insertMember">
+  <!-- parameterType는 생략해도 무관, resultSet 결과를 받을 것이 아니라서 ResultType도 생략 -->
+  	insert into member values (#{id}, #{pwd}, #{name}, #{email}, #{gender}, #{age}, #{phone}, #{address},
+  							sysdate, sysdate, default)
+  </insert>
+  
+  <update id="updatePwd">
+  	update member
+  	set pwd = #{pwd}
+ 	where id = #{id}
+  </update>
+  
+   <update id="updateMember">
+  	update member
+  	set name = #{name}, email = #{email}, gender = #{gender},
+  		age = #{age}, phone = #{phone}, address = #{address}, update_date = sysdate
+ 	where id = #{id}
+  </update>
+  
+  <update id="deleteMember">
+  	update member
+  	set m_status = 'N'
+ 	where id = #{id}
+  </update>
+  
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybaris.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+  	
+  	<select id="getListCount" resultType="_int">
+  		select count(*)
+  		from board
+  		where b_status = 'Y'
+  	</select>
+  	
+  	<select id="selectList" resultMap="boardResultSet">
+  		select *
+  		from board
+  		where b_status = 'Y'
+  		order by bid desc
+  	</select>
+  	
+  	<resultMap type="Board" id="boardResultSet">
+  		<id property="bId" column="bid"/>
+  		<result property="bTitle" column="btitle"/>
+  		<result property="bWriter" column="bwriter"/>
+  		<result property="bContent" column="bcontent"/>
+  		<result property="originalFileName" column="original_filename"/>
+  		<result property="renameFileName" column="rename_filename"/>
+  		<result property="bCount" column="bcount"/>
+  		<result property="bCreateDate" column="b_create_date"/>
+  		<result property="bModifyDate" column="b_modify_date"/>
+  		<result property="bStatus" column="b_status"/>
+  	</resultMap>
+  	
+  	<insert id="insertBoard">
+  		insert into board
+  		values (seq_bid.nextval, #{bTitle}, #{bWriter}, #{bContent},
+  				#{originalFileName}, #{renameFileName}, default, sysdate, sysdate, default)
+  		
+  	</insert>
+</mapper>

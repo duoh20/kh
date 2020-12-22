@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!--  DataBase 등록 -->
+	<!-- BasicDataSource -->
+	<!-- 이미 정의된 어테이션 클래스는 수정할 수 없기 때문에 xml 방식으로 추가해주어야할 때 사용  -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- id=변수명, class=경로, destroy-method=객체 소멸 시 실행할 것 -->
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="SPRING"/>
+		<property name="password" value="SPRING"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+	
+	<!-- sqlSession 빈 등록 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+		<!--  property는 setter로 값을 집어 넣는 방식 -->
+		<!--  calsspath는 큰 resources를 말함(package controller 기준, src/main/resource) -->
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+		<!--  constructor-arg는 생성자로 값을 집어 넣는 방식-->
+	</bean>
+	
+	<!-- 파일 업로드 시 사용할 MultipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000"/>
+		<property name="maxInMemorySize" value="100000000"/>		
+	</bean>
+</beans>
